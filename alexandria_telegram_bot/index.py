@@ -35,4 +35,4 @@ def book(update: Update, context):
 book_handler = CommandHandler('book', book)
 dispatcher.add_handler(book_handler)
 
-updater.start_polling()
+#updater.start_polling()
