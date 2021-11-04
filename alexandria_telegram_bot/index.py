@@ -28,9 +28,9 @@ def echo(update, context):
 echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)    
 dispatcher.add_handler(echo_handler)
 
-def book(update: Update):
+def book(update: Update, context):
     #book_asked = context.args[0]
-    file = 'assets/demo.pdf'
+    file = 'alexandria_telegram_bot/assets/demo.pdf'
     update.message.reply_document(document=open(file, 'rb'))
 book_handler = CommandHandler('book', book)
 dispatcher.add_handler(book_handler)
