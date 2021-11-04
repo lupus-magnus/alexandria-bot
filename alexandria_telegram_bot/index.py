@@ -25,4 +25,4 @@ dispatcher.add_handler(CommandHandler('start', start))
 dispatcher.add_handler(MessageHandler(Filters.text & (~Filters.command), echo))
 dispatcher.add_handler(CommandHandler('book', book))
 
-initialize_bot()
+# initialize_bot()
