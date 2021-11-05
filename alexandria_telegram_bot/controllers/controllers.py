@@ -15,7 +15,8 @@ def echo(update: Update, context):
 
 # Function that delivers book options and the book's pdf.
 def book(update: Update, context) -> None:
-    book_asked = (" ".join(context.args))
+
+    book_asked = (" ".join(context.args)) if len(context.args) > 1 else context.args[0]
     print(book_asked)
     #file = 'alexandria_telegram_bot/assets/demo.pdf'
     #update.message.reply_document(document=open(file, 'rb'))
