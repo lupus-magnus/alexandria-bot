@@ -1,0 +1,3045 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+            navigator.sayswho = (function(){
+                var ua= navigator.userAgent, tem, 
+                M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+                if(/trident/i.test(M[1])){
+                    tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+                    return 'IE '+(tem[1] || '');
+                }
+                if(M[1]=== 'Chrome'){
+                    tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+                    if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+                }
+                M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+                if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
+                return M.join(' ');
+            })();
+
+            if (false) {
+                window.onerror = function(errorMsg, url, lineNumber) {
+                    const request = new XMLHttpRequest()
+                    request.onreadystatechange = function() {}
+                    request.open('GET', '/papi/user/logJsError/?file=' + encodeURIComponent(url) + '&message=' + encodeURIComponent(errorMsg) + '&line=' + lineNumber + '&client=' + encodeURIComponent(navigator.sayswho))
+                    request.send()
+                }
+            }
+        </script>
+<title>Clean Code - A Handbook of Agile Software Craftsmanship | Robert C. Martin | download</title>
+<base href="/"/>
+<meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Clean Code - A Handbook of Agile Software Craftsmanship | Robert C. Martin | download" name="title"/>
+<meta content="Clean Code - A Handbook of Agile Software Craftsmanship | Robert C. Martin | download | Z-Library. Download books for free. Find books" name="description"/>
+<meta content="index,all" name="robots"/>
+<meta content="global" name="distribution"/>
+<meta content="no-cache" http-equiv="cache-control"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<link href="/apple-touch-icon.png?v=1" rel="apple-touch-icon" sizes="180x180"/>
+<link href="favicon.svg" rel="icon"/>
+<link href="/favicon-32x32.svg?v=2" rel="icon" sizes="32x32" type="image/svg+xml"/>
+<link href="/favicon-16x16.svg?v=2" rel="icon" sizes="16x16" type="image/svg+xml"/>
+<link href="/manifest.json?v=1" rel="manifest"/>
+<link color="#5bbad5" href="/safari-pinned-tab.svg?v=1" rel="mask-icon"/>
+<meta content="Z-Library" name="apple-mobile-web-app-title"/>
+<meta content="Z-Library" name="application-name"/>
+<meta content="#ffffff" name="theme-color"/>
+<meta content="49c350d528ba144cace841cac74260ab" name="propeller"/>
+<meta content="5ef0e7b2483f15ef0e7b2484275ef0e7b24845d_ALFAcoins" name="alfacoins-site-verification"/>
+<!-- CSS SET -->
+<!-- JS SET -->
+<link href="/favicon.ico?v=1" rel="SHORTCUT ICON"/>
+<link href="/search.xml" rel="search" title="Search for books in the library Z-Library" type="application/opensearchdescription+xml"/>
+<link href="/resources/build/global.css?0.318" rel="stylesheet" type="text/css"/>
+<script src="/resources/build/global.js?0.318" type="text/javascript"></script>
+<link href="/resources/ext/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" type="text/css"/>
+<link href="/resources/ext/lightbox/jquery.lightbox-0.5.css" rel="stylesheet" type="text/css"/>
+<link href="/resources/ext/select2/select2.min.css" rel="stylesheet" type="text/css"/>
+<link href="/resources/ext/flickity/flickity.css" rel="stylesheet" type="text/css"/>
+<link href="/resources/css/pages/book-details.css?1" rel="stylesheet" type="text/css"/>
+<script src="/resources/ext/typeahead.js" type="text/javascript"></script>
+<script src="/resources/ext/bootstrap-tagsinput/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+<script src="/resources/ext/lightbox/jquery.lightbox-0.5.min.js" type="text/javascript"></script>
+<script src="/resources/ext/select2/select2.min.js" type="text/javascript"></script>
+<script src="/resources/ext/flickity/flickity.min.js" type="text/javascript"></script>
+<script src="/resources/js/pages/book-details.js" type="text/javascript"></script>
+<script>
+            
+            const Config = {"domainHost":"br1lib.org","BRegion":"america"};
+            const CurrentUser = new User(null);
+            const CurrentClientIP = "186.205.50.154";
+            const proxiesToCheck = []; //for google verification
+
+            i18next
+                .use(i18nextHttpBackend)
+                .init({
+                    lng: 'en',
+                    fallbackLng: 'en',
+                    backend: {
+                        loadPath: '/resources/build/locales/{{lng}}?v=1'
+                    }
+                })
+
+            $(document).ready(function() {
+                $('.tooltip-init').tooltip({html: true})
+
+                            })
+
+            $(document).on('focus', '.form-email-field', function() {
+                $(this).tooltip('hide')
+            })
+        </script>
+</head>
+<body class="books/details" style="margin:0px;padding:0px;">
+<table border="0" cellpadding="0" cellspacing="0" height="100%" style="height:100%;" width="100%">
+<tbody>
+<tr style="height:10px;">
+<td>
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<style>
+    div#colorBoxes
+    {
+        text-transform: capitalize;
+    }
+
+    div#colorBoxes ul li.active:nth-child(1)
+    {
+        border: 1px solid #378096;
+        box-shadow: 0 0 6px #7DBCCF;
+        border-top: 0px;
+    }
+
+    div#colorBoxes ul li.active:nth-child(2)
+    {
+        border: 1px solid #6e9b41;
+        box-shadow: 0 0 6px #a4e861;
+        border-top: 0px;
+    }
+</style>
+<div class="darkShadow" id="colorBoxes">
+<ul>
+<li class="" style="background: #49afd0;">
+<a class="header-main-nav-link populate-preferred-domain" data-mode="books" href="/">
+<span class="hidden-xs">9,197,255 books</span>
+<span class="visible-xs">books</span>
+</a>
+</li>
+<li style="background: #8ecd51;">
+<a class="header-main-nav-link populate-preferred-domain" data-mode="articles" href="https://booksc.org/">
+<span class="hidden-xs">84,837,646 articles</span>
+<span class="visible-xs">articles</span>
+</a>
+</li>
+<li class="hidden-xs" style="background: #90a5a8;"><a href="https://z-lib.org">ZLibrary Home</a></li>
+<li class="visible-xs" style="background: #90a5a8;"><a href="https://z-lib.org">Home</a></li>
+</ul>
+</div>
+<div class="navbar-default navbar-right" role="navigation" style="background-color: transparent;">
+<div class="navbar-header">
+<button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" onclick="" type="button">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="clear: both;">
+<ul class="nav navbar-nav navbar-right">
+<li class="dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#" id="loginDDLink" role="button">Sign in <span class="caret"></span></a>
+<ul aria-labelledby="loginDDLink" class="dropdown-menu">
+<li><a class="populate-preferred-domain" data-mode="singlelogin" href="https://singlelogin.me?from=br1lib.org" id="dropdownMenuLoginBtn">Login</a></li>
+<li><a class="populate-preferred-domain" data-mode="singlelogin" href="https://singlelogin.me/registration.php" id="dropdownMenuRegistrationBtn">Registration</a></li>
+</ul>
+</li>
+<li>
+<a href="/howtodonate.php" style="color:#8EB46A;">Donate</a> </li>
+<!-- Admin menu dropdown -->
+<!-- Auth user menu dropdown -->
+<!-- Search menu dropdown -->
+<li class="dropdown" id="quickSearchMenuDD">
+<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle hidden-xs main-menu-item" data-toggle="dropdown" href="#" id="quickSearchMenuDD2" role="button">
+<img src="/img/icon-magnifier.svg" style="width: 18px;"/>
+</a>
+<ul class="dropdown-menu" style="padding: 0; border-top-left-radius: 4px;box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); border: 1px solid rgba(0, 0, 0, .1);">
+<li>
+<form action="/s/" method="get" name="quickSearch" style="padding:20px;">
+<input class="form-control" id="quickSearchInput" name="q" placeholder="Search for title, author, ISBN, publisher, md5.." style="border-radius: 4px; border: 1px solid #ddd; width:400px; padding: 6px 10px;height:40px;" type="text"/>
+<button style="display: none;" type="submit"></button>
+</form>
+</li>
+</ul>
+</li>
+<script>
+                        $("#quickSearchMenuDD").on('shown.bs.dropdown', function(e){
+                            if(window.outerWidth > 768){
+                                $('#quickSearchInput').focus();
+                            }
+                        });
+                    </script>
+<!-- Site menu dropdown -->
+<li class="dropdown">
+<a aria-expanded="true" aria-haspopup="true" class="dropdown-toggle hidden-xs main-menu-item" data-toggle="dropdown" href="#" id="main-menu-dropdown" role="button">
+<img src="/img/icon-main-menu.svg" style="width: 18px;"/>
+</a>
+<ul class="dropdown-menu topmenu">
+<li><a href="/book-add.php"><span class="zlibicon-upload"></span> Add book</a></li>
+<li><a href="/request.php"><span class="zlibicon-request"></span> Book requests</a></li>
+<li><a href="/booklists"><span class="zlibicon-booklist"></span> Booklists</a></li>
+<li><a href="/category-list"><span class="zlibicon-categories"></span> Categories</a></li>
+<li><a href="/popular.php"><span class="zlibicon-popular"></span> Most Popular</a></li>
+<li><a href="/recently.php"><span class="zlibicon-recently"></span> Recently Added</a></li>
+<li class="divider" role="separator"></li>
+<li><a href="/top-zlibrarians.php"><span class="zlibicon-top"></span> Top Z-Librarians</a></li>
+<li><a href="/blog/"><span class="zlibicon-blog"></span> Blog</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<style type="text/css">
+    .main-menu-item img {
+        opacity: 0.7;
+    }
+    .main-menu-item img:hover {
+        opacity: 1;
+    }
+</style>
+<script>
+$("#bs-example-navbar-collapse-1").on('shown.bs.collapse', function(e){
+    $('#main-menu-dropdown').dropdown('toggle');
+    $('#main-menu-dropdown').attr('data-toggle', ''); // make it static    
+
+    $('#admin-menu-dropdown').dropdown('toggle');
+    $('#admin-menu-dropdown').attr('data-toggle', ''); // make it static    
+
+    $("#quickSearchMenuDD2").dropdown('toggle');
+    $('#quickSearchMenuDD2').attr('data-toggle', ''); // make it static
+
+    $("#profileMenu").dropdown('toggle');
+    $('#profileMenu').attr('data-toggle', ''); // make it static
+});
+
+$(document).ready(function() {
+            const booksDomains = ["br1lib.org","b-ok.lat","2lib.org","b-ok.global","1lib.org","3lib.net","4lib.org","1lib.limited","1lib.education"];
+        const articlesDomains = ["booksc.org","art1lib.org","art1lib.com","booksc.me"];
+        const Checker = DomainsChecker
+    
+    const subdomainPrefix = '';
+    const singleloginDomains = ["singlelogin.org","singlelogin.app","singlelogin.me","loginzlib2vrak5zzpcocc3ouizykn6k5qecgj2tzlnab5wcbqhembyd.onion","singlelogin.loc"];
+
+    const domainCheckSuccess = (domain, mode) => {
+        if (subdomainPrefix.length && domain[2] === '.') { // priority for subdomainPrefix
+            domain = domain.substr(3)
+        }
+        $('.populate-preferred-domain[data-mode="' + mode + '"]').each(function() {
+            const uriPath = $(this).attr('href').replace(/^.*\/\/[^\/|\?]+/, '')
+            $(this).attr('href', '//' + subdomainPrefix + domain + uriPath)
+        })
+    }
+
+    const domainCheckError = (domain, mode) => {}
+
+    Checker(booksDomains, domainCheckSuccess, domainCheckError, 'books')
+    Checker(articlesDomains, domainCheckSuccess, domainCheckError, 'articles')
+    DomainsChecker(singleloginDomains, domainCheckSuccess, domainCheckError, 'singlelogin')
+})
+</script> </div>
+</td>
+</tr>
+<tr>
+<td class="g-page-content">
+<div class="container" style="max-width: 1000px;padding-bottom: 40px;">
+<div class="row">
+<div class="col-md-12 itemFullText">
+<style>
+    .adFixW iframe{
+        width:100%;
+    }
+</style>
+<div class="bcNav">
+<a href="/" title="Ebook library br1lib.org">Main</a> <i></i>
+        Clean Code - A Handbook of Agile Software Craftsmanship</div>
+<div class="cBox1">Something went wrong. Please try again</div>
+<div itemscope="" itemtype="http://schema.org/Book">
+<div class="row cardBooks" style="overflow: hidden;">
+<div class="col-sm-3 details-book-cover-container">
+<div class="details-book-cover-content">
+<a class="lightbox details-book-cover checkBookDownloaded" data-book_id="634988" data-isbn="0-13-235088-2" href="https://covers.zlibcdn2.com/covers/books/83/8c/c6/838cc6ac8cb0d8ddb98fdb1ae0c8a443.jpg" itemprop="image" style="padding: 0; text-decoration: none;">
+<div class="z-book-cover">
+<img alt="Book cover Clean Code - A Handbook of Agile Software Craftsmanship" src="https://covers.zlibcdn2.com/covers299/books/83/8c/c6/838cc6ac8cb0d8ddb98fdb1ae0c8a443.jpg"/>
+</div>
+</a>
+</div>
+</div>
+<div class="col-sm-9">
+<h1 itemprop="name" style="color: #000; line-height: 140%;">
+                Clean Code - A Handbook of Agile Software Craftsmanship            </h1>
+<i><a class="color1" href="/g/Robert C. Martin" itemprop="author" title="Find all the author's books">Robert C. Martin</a></i>
+<div class="book-rating-detail">
+<div class="book-rating">
+<span class="book-rating-interest-score">
+                            5.0                        </span> /
+                        <span class="book-rating-quality-score">
+                            4.0                        </span>
+</div>
+<div class="book-comments-here"></div>
+<div class="bookmarks" data-book_id="634988" style="display: none">
+<i class="icon-heart btn-save-for-later" title="Mark the book you like best or plan to download later"></i>
+<i class="icon-bookmark btn-booklists" title="Add the book to your personal themed book collection and share it with your community"></i>
+</div>
+</div>
+<div class="book-choice-rating" data-init="0" data-visible="0">
+<div class="overlay-post-score"><div id="bookChoiceRatingtFloatingSpinner"></div></div>
+<div class="overlay"><div id="bookChoiceRatingSpinner"></div></div>
+<div class="book-choice-interest-title">How much do you like this book?</div>
+<div class="book-choice-interest-stars stars-list cursor-pointer" data-disabled="0" data-id="634988" data-type="interest">
+<i class="book-rating-star"></i>
+<i class="book-rating-star"></i>
+<i class="book-rating-star"></i>
+<i class="book-rating-star"></i>
+<i class="book-rating-star"></i>
+</div>
+<div class="book-choice-quality-stub">
+<div class="book-choice-quality-title">What’s the quality of the file?</div>
+<div class="book-choice-quality-dmsg">Download the book for quality assessment</div>
+</div>
+<div class="book-choice-quality-title">
+<div>What’s the quality of the downloaded files?</div>
+</div>
+<div class="book-quality-rating-template">
+<div class="book-format-quality-rating">
+<div class="format-info">
+<span class="download-date"></span>
+<span class="extension"></span>
+<span class="size"></span>
+</div>
+<div class="book-choice-quality-stars stars-list cursor-pointer" data-disabled="0" data-id="" data-type="quality">
+<i class="book-rating-star"></i>
+<i class="book-rating-star"></i>
+<i class="book-rating-star"></i>
+<i class="book-rating-star"></i>
+<i class="book-rating-star"></i>
+</div>
+</div>
+</div>
+</div>
+<div id="bookDescriptionBox" itemprop="reviewBody" style="padding:10px 0; font-size:10pt">
+                    Even bad code can function. But if code isn’t clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn’t have to be that way.<p>Noted software expert Robert C. Martin presents a revolutionary paradigm with <i><b>Clean Code: A Handbook of Agile Software Craftsmanship</b></i>. Martin has teamed up with his colleagues from Object Mentor to distill their best agile practice of cleaning code “on the fly” into a book that will instill within you the values of a software craftsman and make you a better programmer—but only if you work at it.</p><p>What kind of work will you be doing? You’ll be reading code—lots of code. And you will be challenged to think about what’s right about that code, and what’s wrong with it. More importantly, you will be challenged to reassess your professional values and your commitment to your craft.</p><p><b><i>Clean Code</i></b> is divided into three parts. The first describes the principles, patterns, and practices of writing clean code. The second part consists of several case studies of increasing complexity. Each case study is an exercise in cleaning up code—of transforming a code base that has some problems into one that is sound and efficient. The third part is the payoff: a single chapter containing a list of heuristics and “smells” gathered while creating the case studies. The result is a knowledge base that describes the way we think when we write, read, and clean code.</p><p>Readers will come away from this book understanding<br/></p><ul><li>How to tell the difference between good and bad code</li><li>How to write good code and how to transform bad code into good code</li><li>How to create good names, good functions, good objects, and good classes</li><li>How to format code for maximum readability</li><li>How to implement complete error handling without obscuring code logic</li><li>How to unit test and practice test-driven development</li></ul>This book is a must for any developer, software engineer, project manager, team lead, or systems analyst with an interest in producing better code.                </div>
+<div style="overflow: hidden; zoom: 1; margin-top: 30px;">
+<div class="bookDetailsBox">
+<div class="bookProperty property_categories">
+<div class="property_label">Categories:</div>
+<div class="property_value"><a href="/category/198/Computers-Programming">Computers - Programming</a></div></div>
+<div class="bookProperty property_year">
+<div class="property_label">Year:</div>
+<div class="property_value">2008</div></div>
+<div class="bookProperty property_edition">
+<div class="property_label">Edition:</div>
+<div class="property_value">1</div></div>
+<div class="bookProperty property_publisher">
+<div class="property_label">Publisher:</div>
+<div class="property_value">Prentice Hall</div></div>
+<div class="bookProperty property_language">
+<div class="property_label">Language:</div>
+<div class="property_value text-capitalize">english</div></div>
+<div class="bookProperty property_pages">
+<div class="property_label">Pages:</div>
+<div class="property_value"><span title="Pages paperback">462</span></div></div>
+<div class="bookProperty property_isbn 10">
+<div class="property_label">ISBN 10:</div>
+<div class="property_value">0132350882</div></div>
+<div class="bookProperty property_isbn 13">
+<div class="property_label">ISBN 13:</div>
+<div class="property_value">9780132350884</div></div>
+<div class="bookProperty property__file">
+<div class="property_label">File:</div>
+<div class="property_value">PDF, 2.93 MB</div></div>
+<div class="bookProperty property_user_tags" style="display: none;">
+<div class="property_label">Your tags:</div>
+<div class="property_value"></div></div></div> </div>
+</div>
+</div>
+<div style="margin-top: 30px; margin-bottom: 15px;">
+<div class="details-buttons-container pull-left">
+<div class="book-details-button">
+<div class="btn-group">
+<a class="btn btn-primary dlButton addDownloadedBook" data-book_id="634988" data-isbn="0-13-235088-2" href="/dl/634988/de3301" rel="nofollow" target="">
+<span aria-hidden="true" class="glyphicon glyphicon-download-alt"></span>
+                Download (pdf, 2.93 MB)
+            </a>
+<button class="btn btn-primary dropdown-toggle btnCheckGoogleDriveButton" data-check-formats="0" data-convertation-available="1" data-toggle="dropdown" id="btnCheckOtherFormats" type="button">
+<span class="caret"></span>
+<span class="sr-only">Toggle Dropdown</span>
+</button>
+<ul class="dropdown-menu">
+<li><a href="/dl/634988/de3301?openInBrowser" target="_blank">Open in Browser</a></li>
+<li class="divider" role="separator"></li>
+<li id="bookOtherFormatsContainer">
+<span class="dropdown-menu-muted" style="padding: 5px 19px 0; white-space: nowrap;">
+                                Checking other formats...
+                                <span id="bookOtherFormatsSpinnerContainer"></span>
+</span>
+</li>
+<li class="divider" role="separator"></li>
+<li><a class="converterLink" data-book-id="634988" data-convert-to="epub" href="javascript:void(0);">Convert to EPUB</a></li><li><a class="converterLink" data-book-id="634988" data-convert-to="fb2" href="javascript:void(0);">Convert to FB2</a></li><li><a class="converterLink" data-book-id="634988" data-convert-to="mobi" href="javascript:void(0);">Convert to MOBI</a></li><li><a class="converterLink" data-book-id="634988" data-convert-to="txt" href="javascript:void(0);">Convert to TXT</a></li><li><a class="converterLink" data-book-id="634988" data-convert-to="rtf" href="javascript:void(0);">Convert to RTF</a></li>
+<li class="divider" role="separator"></li>
+<li><span class="dropdown-menu-muted">Converted file can differ from the original. If possible, download the file in its original format.</span></li>
+</ul>
+</div> </div>
+<div class="book-details-button"><a class="btn btn-default" href="ireader/634988" rel="nofollow" target="_blank">Preview</a></div>
+<div class="book-details-button">
+<div class="btn-group" id="sendToEmailButtonBox">
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-default dropdown-toggle button-send-book" data-toggle="dropdown" type="button">
+                        Send-to-Kindle or Email <span class="caret"></span>
+</button>
+<ul class="dropdown-menu">
+<li><a href="https://singlelogin.me?from=br1lib.org" target="blank">Please login to your account first</a></li> <li class="divider" role="separator"></li>
+<li>
+<div class="dropdown-menu-muted">
+                                Need help? Please read our short guide <a href="/info/howtokindle.php">how to send a book to Kindle</a> <div>
+</div>
+</div>
+</li></ul></div>
+<div class="pull-right">
+</div>
+<div style="clear: both;"></div>
+</div>
+<div class="cBox1" id="sentToEmailInfo" style="display:none;">
+        The file will be sent to your email address. It may take up to 1-5 minutes before you receive it.    </div>
+<div class="cBox1" id="sentToEmailInfoKindle" style="display:none;">
+        The file will be sent to your Kindle account. It may takes up to 1-5 minutes before you received it.        <br/><br/>
+<b>Please note</b>: you need to verify every book you want to send to your Kindle. Check your mailbox for the verification email from Amazon Kindle.    </div>
+<div class="cBox1" id="sendToGoogleDriveMessage" style="display:none; position: relative;"></div>
+<div class="cBox1" id="converterCurrentStatusesBoxContainer" style="display:none; position: relative; padding-left: 28px;">
+<div id="converterCurrentStatusesBox"></div>
+</div>
+<div class="cBox1" id="converterStatusBox" style="display:none"></div>
+</div>
+<script type="text/javascript">
+            const availableTags = [];
+            const CurrentBook = new Book({"id":"634988","title":"Clean Code - A Handbook of Agile Software Craftsmanship","termsHash":"67e17a9cae6312ea79f65051638eb2f6"})
+            const CurrentBookRating = new BookRating(CurrentUser)
+            const $tagsInput = $('#inputTags')
+            const tags = $tagsInput.length ? new TagsInput($tagsInput, CurrentUser, CurrentBook.id, availableTags) : null
+
+            
+            $(function () {
+
+                $('#btnCheckOtherFormats').click(function() {
+                    if (CurrentBook.otherFormatsLoaded) {
+                        return
+                    }
+
+                    CurrentBook.checkOtherFormats()
+                    CurrentBook.otherFormatsLoaded = true
+                })
+
+                if ($('#btnCheckOtherFormats').data('check-formats') == 1) {
+                    const spinner = new ZLibrarySpinner('btnCheckOtherFormats').length(3).radius(2).width(2).start()
+                    CurrentBook.checkOtherFormats().then(() => spinner.stop())
+                    CurrentBook.otherFormatsLoaded = true
+                }
+
+                $('a.lightbox').lightBox({
+                    containerResizeSpeed: 1
+                });
+
+                // read more
+                var height = 300;
+                if ($('.termsCloud').height() > 0)
+                {
+                    height = height - $('.termsCloud').height();
+                }
+
+                if (height < 225) {
+                    height = 225; // min height
+                }
+
+                // prevent bad line-brake
+                height = Math.floor(height / parseFloat($('#bookDescriptionBox').css('line-height'))) * parseFloat($('#bookDescriptionBox').css('line-height')) + 10; //10 - padding-bottom of box
+
+                if ($('#bookDescriptionBox').height() > height)
+                {
+                    $('#bookDescriptionBox').css('overflow', 'hidden');
+                    $('#bookDescriptionBox').css('height', height);
+                    $('<div style="text-align:center; cursor:pointer;font-size: 12px; height:25px;" class="moreBtn"><div style="display:inline-block;border-top: 1px dashed #333; width:75%; margin-top: 15px;"><span style="display:inline-block;position:relative;top:-13px;padding:0 30px; background: #F6F6F6;">click to read more</span></div></div>').insertAfter("#bookDescriptionBox");
+                }
+
+                $('.moreBtn, #bookDescriptionBox').click(function () {
+                    $('#bookDescriptionBox').css('height', 'auto');
+                    $('#bookDescriptionBox').css('overflow', 'auto');
+                    $('.moreBtn').remove();
+                });
+
+                $('#btnSaveBook').click(function () {
+                    const success = function (response) {
+                        $('#btnSaveBook').addClass('hidden')
+                        $('#btnUnsaveBook').removeClass('hidden')
+                                                ZLibraryNotify({url: '/users/saved_books.php'})
+                            .info('This book was saved in your profile. Click here to see all favorites')
+                    }
+
+                    CurrentUser.saveReadLater(CurrentBook.id, success)
+                })
+
+                $('#btnUnsaveBook').click(function () {
+                    const success = function (response) {
+                        $('#btnSaveBook').removeClass('hidden')
+                        $('#btnUnsaveBook').addClass('hidden')
+                        if (typeof tags === 'object') {
+                            tags.clear()
+                        }
+                    }
+
+                    CurrentUser.deleteReadLater(CurrentBook.id, success)
+                });
+
+                // book rating
+                CurrentBookRating.initTooltip($('.book-rating-detail .book-rating'))
+                CurrentBookRating.initChoiceContainerEvents();
+                CurrentBookRating.checkExistsScoreForBook(CurrentBook.id, CurrentBook.data.termsHash, function (hasScore) {
+                    if (hasScore) {
+                        $('.book-rating-detail .book-rating').addClass('book-appreciated')
+                    }
+                })
+                $(document).on('click', '.book-rating-detail .book-rating.cursor-pointer', function () {
+                    if (CurrentBookRating.tooltipEl) {
+                        CurrentBookRating.tooltipEl.tooltip('hide')
+                    }
+                    CurrentBookRating.loadUserScores(CurrentBook.id, CurrentBook.data.termsHash);
+                });
+
+                $(document).on('click', '.book-choice-rating .stars-list', function(e) {
+                    if (!$(e.target).hasClass('book-rating-star') || $(this).data('disabled')) {
+                        return
+                    }
+
+                    const $that = $(this)
+                    const $bookRatingEl = $('.book-rating-detail .book-rating')
+                    const $ratingEl = $('.book-choice-rating')
+                    const $ratingOverlayEl = $ratingEl.find('.overlay-post-score')
+                    const $spinnerEl = $('#bookChoiceRatingtFloatingSpinner')
+
+                    const data = {
+                        'bookId': $that.data('id'),
+                        'type': $that.data('type'),
+                        'score': $that.find('.active-choice').length
+                    }
+
+                    if ($that.data('score') == data.score) {
+                        return
+                    }
+
+                    $spinnerEl.css({'top': '-10px'})
+                    $that.after($spinnerEl)
+
+                    $ratingOverlayEl.show()
+                    $that.data('disabled', 1)
+
+                    $that.fadeTo(100, 0, function () {
+                        CurrentBookRating.postScore(data, $spinnerEl, (result) => {
+                            $ratingOverlayEl.hide()
+                            $that.fadeTo(300, 1)
+                            $that.data('disabled', 0)
+
+                            if (!result.success) {
+                                return
+                            }
+
+                            $that.data('score', data.score)
+                            $that.find('.active, .active-none').removeClass('active active-none')
+                            $that.find('.active-choice').addClass('active')
+
+                            if ($that.data('id') != CurrentBook.id) {
+                                return
+                            }
+
+                            if (result.avg.interest > 0) {
+                                $bookRatingEl.addClass('book-appreciated')
+                                $('.book-rating-interest-score')
+                                    .removeClass('none')
+                                    .text(parseFloat(result.avg.interest).toFixed(1))
+                            }
+                            if (result.avg.quality > 0) {
+                                $bookRatingEl.addClass('book-appreciated')
+                                $('.book-rating-quality-score')
+                                    .removeClass('none')
+                                    .text(parseFloat(result.avg.quality).toFixed(1))
+                            }
+                        })
+                    })
+                })
+
+                // comments info
+                $('.book-rating-detail .book-comments-here').replaceWith($('.book-comments-info'));
+                $(document).on('click', '.book-comments-info', function() {
+                    let jscommentsTextarea = $("#jscommentsTextarea");
+                    $([document.documentElement, document.body]).animate({
+                        scrollTop: jscommentsTextarea.offset().top
+                    }, 500, function () { jscommentsTextarea.focus(); });
+                });
+            });
+
+            // Bookmarks
+            if ($('.bookmarks').length) {
+                userBookmarksInstance = new UserBookmarks(CurrentUser.id)
+                userBookmarksInstance.init({page: 'book'})
+            }
+
+            // converter links
+            $('.converterLink').click(function (e) {
+                $('#converterCurrentStatusesBoxContainer').show();
+                $('#converterCurrentStatusesBox').html('Conversion is in progress. The link to download will appear here.<br/>');
+
+                $('#converterCurrentStatusesBoxContainer').css('padding-left', '28px');
+                const spinner = new ZLibrarySpinner('converterCurrentStatusesBoxContainer', 'button')
+                spinner.start()
+
+                $.RPC('ConvertationTools::rpcConvert', {'book_id': $(this).data('book-id'), 'convertTo': $(this).data('convert-to')}).done(function (e) {
+                    convertationStatusesAutoupdaterObserver(spinner);
+                }).fail(function (a, b) {
+                    $('#converterCurrentStatusesBox').html('<span class="error">' + b.errors.message() + '</span>');
+                    $('#converterCurrentStatusesBoxContainer').css('padding-left', '10px');
+                    spinner.stop()
+                });
+            });
+
+            $('.sendToEmailButton').click(function () {
+                $.RPC('sendToKindle', {'book_id': $(this).data('book_id'), 'mode': $(this).data('mode')}).done(function (e) {
+                    if (e.response.status) {
+                        //alert('Sent to ' + e.response.email);
+                    }
+                }).fail(function (a, b) {
+                    $('#sentToEmailInfo').html(b.errors.message());
+                    $('#sentToEmailInfoKindle').html(b.errors.message());
+                });
+
+                if ($(this).data('kindle'))
+                {
+                    $('#sentToEmailInfoKindle').show('fast');
+                } else {
+                    $('#sentToEmailInfo').show('fast');
+                }
+                $('#sendToEmailButtonBox').hide('fast');
+            });
+
+            $(document).on("click", ".sendToEmailAfterConversion", function () {
+                const bookId = $(this).data('book_id')
+
+                $.RPC('sendToKindle', {
+                    'book_id': $(this).data('book_id'),
+                    'mode': 'kindle',
+                    'convertedTo': $(this).data('format')
+                })
+                .done(function (e) {})
+                .fail(function (a, b) {
+                    $('#sentToEmailInfo').html(b.errors.message());
+                    $('#sentToEmailInfoKindle').html(b.errors.message());
+                    $('#sendToGoogleDriveMessage').html(b.errors.message());
+                    CurrentUser.deleteDownloadedBook(bookId)
+                });
+
+                $('#sentToEmailInfoKindle').show('fast');
+                $(this).replaceWith('[sent to kindle]');
+            });
+
+            //$('[data-toggle="tooltip"]').tooltip({'html': true});
+            $(window).on("load", function () {
+                $('[data-toggle="tooltip"]').tooltip({'html': true});
+                $('[data-autoopen="true"]').tooltip('show');
+                $('.btn-savebook-disabled').tooltip({
+                    'html': true,
+                    'trigger': 'manual',
+                });
+
+                $('.btn-savebook-disabled').mouseover(function () {
+                    $(this).tooltip('show')
+                });
+
+                $('.btn-savebook-disabled').click(function () {
+                    $(this).tooltip('hide')
+                });
+            });
+
+            var convertationStatusesAutoupdaterRuned = false;
+            function convertationStatusesAutoupdaterObserver(spinner)
+            {
+                if (convertationStatusesAutoupdaterRuned)
+                {
+                    return;
+                } else {
+                    convertationStatusesAutoupdaterRuned = true;
+                    convertationStatusesAutoupdater(spinner);
+                }
+            }
+
+            function convertationStatusesAutoupdater(spinner)
+            {
+                rpcUrl = '/rpc/ConvertationTools::getCurrentJobsStatuses?clear=1&gg_text_mode=1&bookId=' + CurrentBook.id;
+                $.ajaxSetup({cache: false}); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
+
+
+                $.ajax({
+                    url: rpcUrl,
+                    datatype: 'html'
+                }).done(function (response) {
+                    $('#converterCurrentStatusesBox').html(response);
+                    if (response.search('progress') === -1)
+                    {
+                        if (spinner) {
+                            spinner.stop()
+                            $('#converterCurrentStatusesBoxContainer').css('padding-left', '10px');
+                        }
+                        convertationStatusesAutoupdaterRuned = false;
+                        return;
+                    }
+                    setTimeout(() => convertationStatusesAutoupdater(spinner), 15000);
+                }).error(function () {
+                    setTimeout(() => convertationStatusesAutoupdater(spinner), 15000);
+                });
+            }
+
+            if ($('#converterCurrentStatusesBox').html().length)
+            {
+                $('#converterCurrentStatusesBoxContainer').css('padding-left', '28px');
+                const spinner = new ZLibrarySpinner('converterCurrentStatusesBoxContainer', 'button')
+                spinner.start()
+
+                convertationStatusesAutoupdaterObserver(spinner);
+                $('#converterCurrentStatusesBoxContainer').show();
+            }
+
+            function iOSversion()
+            {
+                if (/iP(hone|od|ad)/.test(navigator.userAgent)) {
+                    const v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/)
+                    return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)]
+                }
+
+                return [];
+            }
+
+            /*
+            if (iOSversion()[0] >= 13 && navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/)) {
+                // preload hint image
+                setTimeout(function() {
+                    new Image().src = "/img/safary-download-hint.png";
+                }, 2000);
+
+                $('.dlButton').click(function() {
+                    currentDomain = location.hostname.split('.').reverse()[1] + '.' + location.hostname.split('.').reverse()[0]
+
+                    document.cookie = "ios_download_tooltip=1; expires=Tue, 19 Jan 2038 03:14:07 GMT; domain=." + currentDomain + "; path=/"
+                    const iosNotify = $.notify('message', {
+                        template: '<div data-notify="container" class="col-xs-12 col-sm-3 alert" style="background: #fff; border: 1px solid #999;">' +
+                            '<span data-notify="message">' +
+                                '<img src="/img/safary-download-hint.png" style="width: 100%; margin-bottom: 8px;">' +
+                                'Hint for Safari iOS 13 users: all your downloads are hidden under the arrow icon to the right of the browser address bar.<br>' +
+                                '<div class="text-right"><a href="javascript://" id="btnIosNotifyClose" style="color: #337ab7;">Hide</a></div>' +
+                            '</span>' +
+                        '</div>',
+                        offset: 0,
+                        delay: 4000
+                    })
+
+                    $('#btnIosNotifyClose').click(function() {
+                        document.cookie = 'ios_download_tooltip=10; expires=Tue, 19 Jan 2038 03:14:07 GMT; domain=.' + currentDomain + '; path=/'
+                        iosNotify.close()
+                    });
+                })
+            }
+            */
+
+            $(document).on('click', '.addDownloadedBook', function() {
+                CurrentUser.addDownloadedBook($(this).data('book_id'))
+            })
+
+            $(document).on('click', '.btnMarkAsReaded', function() {
+                const bookId = $(this).data('book_id');
+                new ZLibraryResponse(new Request('/papi/user/count-download/' + bookId))
+                    .fetch()
+
+                CurrentUser.addDownloadedBook(bookId)
+            })
+
+            // Send to Google Drive button \\
+            function googleDriveTokenExists() {
+                let cook = getCookie('google-oauth2-credentials')
+                let auth = cook ? JSON.parse(cook) : {}
+                let timestamp = new Date().getTime() / 1000
+                return auth.access_token && auth.created + auth.expires_in > timestamp
+            }
+
+            function sendToGoogleDrive(bookId) {
+                $('#sendToGoogleDriveMessage').show('fast').html('<div style="padding-left: 22px;">Book sending is in progress</div>')
+
+                const request = new Request('/papi/book/' + bookId + '/send-to/google-drive')
+                const spinner = new ZLibrarySpinner('sendToGoogleDriveMessage', 'button').start()
+
+                new ZLibraryResponse(request)
+                    .spinner(spinner)
+                    .success(json => {
+                        $('#sendToGoogleDriveMessage').html('The file was sent to your Google Drive account. You will find it in the "<b>ZLibrary</b>" folder')
+                        CurrentUser.addDownloadedBook(bookId)
+                    })
+                    .error(json => {
+                        setCookie('google-oauth2-credentials', '', '', '/', '.br1lib.org')
+                        $('#sendToGoogleDriveMessage').hide('fast')
+                        try {
+                            json = JSON.parse(json.error);
+                            if (json.error.code == 401) {
+                                ZLibraryNotify().error('Something went wrong with your Google Drive authorization. Please try again')
+                                return
+                            }
+                            ZLibraryNotify({delay: 8000}).error(json.error.message)
+                        } catch(err) {
+                            ZLibraryNotify({delay: 8000}).error(json.error ? json.error : err)
+                        }
+                    })
+                    .fetch()
+            }
+
+            function googleDriveStatusAutoupdater(bookId) {
+                if (googleDriveTokenExists()) {
+                    sendToGoogleDrive(bookId)
+                    return
+                }
+
+                setTimeout(() => googleDriveStatusAutoupdater(bookId), 2000)
+            }
+
+            $('.sendToGoogleDriveButton').click(function () {
+                const bookId = $(this).data('book_id')
+
+                if (!googleDriveTokenExists()) {
+                    new ZLibraryResponse(new Request('/papi/user/google/get-redirect/' + bookId))
+                        .success(response => {
+                            window.open(response.redirect_uri, "Google", "width=500,height=500");
+                            setTimeout(() => googleDriveStatusAutoupdater(bookId), 2000)
+                        })
+                        .fetch()
+                    return
+                }
+
+                sendToGoogleDrive(bookId)
+            })
+            // End of send to Google Drive button \\
+
+
+    let superImage2 = new Image();
+    superImage2.onload = function ()
+    {
+        if(this.width !== 1){
+            return ; //cant load correct image from wiki
+        }
+
+        try {
+            if (window.localStorage !== undefined) {
+                let p = new ProxyChecker();
+                p.clearExcept(proxiesToCheck);
+                $.each(proxiesToCheck, function (index, proxy) {
+                    p.refresh(proxy);
+                });
+                p.syncCookies();
+
+                // check domains
+                let domains2check = ["br1lib.org","b-ok.lat","2lib.org","b-ok.global","1lib.org","3lib.net","4lib.org","1lib.limited","1lib.education"];
+                let domainsChecker = new ProxyChecker();
+                domainsChecker.scope = 'domains';
+                domainsChecker.pathToTest = '1pixel.php?v=9876';
+                domainsChecker.clearExcept(domains2check);
+                $.each(domains2check, function (index, proxy) {
+                    domainsChecker.refresh(proxy);
+                });
+                domainsChecker.syncCookies();
+            }
+        } catch (e) {
+        }
+    };
+    superImage2.src = "https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png?x1" + new Date().getTime();
+</script>
+<h2 class="color1" style="margin-top:20px;overflow: hidden;">
+<span style="float:left;">You may be interested in</span>
+<a href="https://rec2me.com" style="float:right;font-size: 12px; color: #49afd0;line-height: 16pt;" target="_blank" title="recommender system and recommendation engine">
+        Powered by Rec2Me
+    </a>
+</h2>
+<div style="background: #49AFD0; height:2px; width: 100%; margin-bottom: 20px;"> </div>
+<div id="bMosaicBox" style="display:none">
+<div class="brick checkBookDownloaded" data-book_id="437612" data-isbn="9780470028612" style="width:14%;">
+<a href="/book/437612/054fae?dsource=recommend" style="text-decoration: none;" title="Coding Theory - Algorithms, Architectures, and Applications">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/a6/70/b2/a670b2f075822838d1debe6e0951bc71.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="541024" data-isbn="9781848000704" style="width:14%;">
+<a href="/book/541024/5b1659?dsource=recommend" style="text-decoration: none;" title="The Algorithm Design Manual">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/00/cb/81/00cb810a4b852c9631b47fb6de8efad0.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="632706" data-isbn="9780201633610" style="width:14%;">
+<a href="/book/632706/5b3eff?dsource=recommend" style="text-decoration: none;" title="Design Patterns: Elements of Reusable Object-Oriented Software">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/49/63/a7/4963a7703acf363425e8099d6b12d2dc.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="669433" data-isbn="9780735619678" style="width:14%;">
+<a href="/book/669433/321012?dsource=recommend" style="text-decoration: none;" title="Code Complete - A Practical Handbook of Software Construction">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/f3/5d/f0/f35df0eb8baeb3dbd64f5216f48e9505.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="899239" data-isbn="0596009208" style="width:14%;">
+<a href="/book/899239/a0858f?dsource=recommend" style="text-decoration: none;" title="Head First Java, 2nd Edition">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/d5/be/db/d5bedbe6b001445ebb3851500fd19fb3.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="986690" data-isbn="0262033844" style="width:14%;">
+<a href="/book/986690/1e31b0?dsource=recommend" style="text-decoration: none;" title="Introduction to algorithms">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/23/6a/1a/236a1aa3905bd94d9163eb87c84a93dc.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="1171183" data-isbn="9780007369867" style="width:14%;">
+<a href="/book/1171183/29a074?dsource=recommend" style="text-decoration: none;" title="How to Talk to Anyone: 92 Little Tricks for Big Success in Relationships">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/2a/17/69/2a17692555dbd43c04d696aaa8b55444.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="1248513" data-isbn="0735611319" style="width:14%;">
+<a href="/book/1248513/dcdd05?dsource=recommend" style="text-decoration: none;" title="Code: The Hidden Language of Computer Hardware and Software">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/aa/f0/8a/aaf08ab2a67887c30be67b9aa7096558.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="1304294" data-isbn="1593274246" style="width:14%;">
+<a href="/book/1304294/e068d5?dsource=recommend" style="text-decoration: none;" title="Think Like a Programmer: An Introduction to Creative Problem Solving">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/68/a7/ce/68a7ced5897ded4c733fd1781dec3e26.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="1304587" data-isbn="1118008189" style="width:14%;">
+<a href="/book/1304587/768897?dsource=recommend" style="text-decoration: none;" title="HTML and CSS: Design and Build Websites">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/f2/f2/31/f2f231b39e648d7db773fe8c02e87132.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="1309522" data-isbn="9780132911221" style="width:14%;">
+<a href="/book/1309522/38bb46?dsource=recommend" style="text-decoration: none;" title="The Robert C. Martin Clean Code Collection">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/df/e1/cd/dfe1cdadc2533bc48a0605ec472a6961.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="2519956" data-isbn="9781506094380" style="width:14%;">
+<a href="/book/2519956/2c2800?dsource=recommend" style="text-decoration: none;" title="Learn Python in One Day and Learn It Well: Python for Beginners with Hands-on Project. The only book you need to start coding in Python immediately">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/3d/f2/a0/3df2a0de6424a738e4cdbd41b537de28.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="2714421" data-isbn="978-0-201-89683-1" style="width:14%;">
+<a href="/book/2714421/445224?dsource=recommend" style="text-decoration: none;" title="The Art of Computer Programming, Vol. 1: Fundamental Algorithms, 3rd Edition">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/36/12/ce/3612cebcee66e75a23440b97a1b560db.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="2724521" data-isbn="0984782850" style="width:14%;">
+<a href="/book/2724521/e40923?dsource=recommend" style="text-decoration: none;" title="Cracking the Coding Interview: 189 Programming Questions and Solutions">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/fc/b4/9f/fcb49f53d5e943ce8acdc4469f63dc5d.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="2738376" data-isbn="978-0-321-57351-3" style="width:14%;">
+<a href="/book/2738376/3dc280?dsource=recommend" style="text-decoration: none;" title="Algorithms, 4th Edition: Essential Information about Algorithms and Data Structures">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/18/13/a5/1813a56fa6860668d1804ce4e1cc6191.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="2779892" data-isbn="1617292230" style="width:14%;">
+<a href="/book/2779892/2466e4?dsource=recommend" style="text-decoration: none;" title="Grokking Algorithms: An Illustrated Guide for Programmers and Other Curious People">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/9f/2b/39/9f2b390517083cf4485ba524b80815f5.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="2863273" data-isbn="9780137081073" style="width:14%;">
+<a href="/book/2863273/b44953?dsource=recommend" style="text-decoration: none;" title="The clean coder : a code of conduct for professional programmers">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/e2/d8/b6/e2d8b636b8673c10456e9129f534e745.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="3415047" data-isbn="9780596007126" style="width:14%;">
+<a href="/book/3415047/454329?dsource=recommend" style="text-decoration: none;" title="Head First Design Patterns">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/8c/26/dc/8c26dcd40152ee5088314b1c62db48cb.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="3483158" data-isbn="978-0134685991" style="width:14%;">
+<a href="/book/3483158/b61e1a?dsource=recommend" style="text-decoration: none;" title="Effective Java">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/0b/b1/20/0bb12057b79054c4e236350b69c02fa5.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="3492905" data-isbn="0134692888" style="width:14%;">
+<a href="/book/3492905/ebdb92?dsource=recommend" style="text-decoration: none;" title="Learn Python 3 the Hard Way: A Very Simple Introduction to the Terrifyingly Beautiful World of Computers and Code">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/b0/6f/84/b06f844f416aaee94a19dca4730d66bb.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="3556226" data-isbn="9781491960202" style="width:14%;">
+<a href="/book/3556226/072a01?dsource=recommend" style="text-decoration: none;" title="Learning Web Design - A Beginner’s Guide to HTML, CSS, JavaScript, and Web Graphics">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/2c/ad/8e/2cad8eb632e7aae4d523d17731fa58d2.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="3608220" data-isbn="1788835832" style="width:14%;">
+<a href="/book/3608220/10554d?dsource=recommend" style="text-decoration: none;" title="Clean Code in Python: Refactor your legacy codebase">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/86/15/e8/8615e8bec188e4bcf4983c4eb421740a.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="3637867" data-isbn="0134757599" style="width:14%;">
+<a href="/book/3637867/db67ef?dsource=recommend" style="text-decoration: none;" title="Refactoring: Improving the Design of Existing Code">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/59/d9/30/59d9309e6ee8107844bcfe6e4bdc6c2e.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="3697965" data-isbn="978-1260440232" style="width:14%;">
+<a href="/book/3697965/3cb076?dsource=recommend" style="text-decoration: none;" title="Java: The Complete Reference, Eleventh Edition">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/7f/b0/e5/7fb0e58e87aef95feae8c9d3a986a0a7.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="3710169" data-isbn="0134494164" style="width:14%;">
+<a href="/book/3710169/d65f36?dsource=recommend" style="text-decoration: none;" title="Clean Architecture: A Craftsman’s Guide to Software Structure and Design">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/b1/c9/42/b1c94251908069df0a3dbe2462f52cdd.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="5002979" data-isbn="0137081073" style="width:14%;">
+<a href="/book/5002979/77b9b7?dsource=recommend" style="text-decoration: none;" title="The Clean Coder: A Code of Conduct for Professional Programmers">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/6d/13/19/6d13198916038a3ff8c8df5b84b4e76b.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="5227684" data-isbn="0135957052" style="width:14%;">
+<a href="/book/5227684/e1933f?dsource=recommend" style="text-decoration: none;" title="The Pragmatic Programmer: Your Journey to Mastery, 20th Anniversary Edition">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/82/a0/43/82a0439a2d67bbdc1cacc5596b9d264a.jpg" width="100%"/></div>
+</a>
+</div>
+<div class="brick checkBookDownloaded" data-book_id="5408405" data-isbn="9780135782002" style="width:14%;">
+<a href="/book/5408405/a57e80?dsource=recommend" style="text-decoration: none;" title="Clean agile : back to basics">
+<div class="z-book-cover"><img class="bMosaicCover bgrid-item item" src="https://covers.zlibcdn2.com/covers200/books/64/33/d0/6433d0f19e5bde14a563a2ce2b49d8ce.png" width="100%"/></div>
+</a>
+</div></div> <script src="/resources/ext/freewall.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        $('#bMosaicBox').css('display', 'block');
+
+        var wall = new Freewall('#bMosaicBox');
+        wall.reset({
+            selector: '.brick',
+            keepOrder: true,
+            //animate: true,
+            cellW: $($('.brick')[0]).outerWidth(),
+            cellH: 'auto',
+            gutterX: 8,
+            gutterY: 8,
+            fixSize: false,
+            onResize: function () {
+                wall.fitWidth();
+            },
+            onComplete: function () {
+                $('#bMosaicBox .bookDownloaded').each(function () {
+                    $(this).css('height', $(this).find('img').height() + 'px')
+                })
+            }
+        });
+
+        wall.container.find('img').load(function () {
+            wall.fitWidth();
+        });
+
+        wall.fitWidth();
+    });
+</script>
+<h2 class="color1" style="margin-top:20px;">Most frequently terms</h2>
+<div style="background: #49AFD0; height:2px; width: 100%; margin-bottom: 20px;"> </div>
+<div class="termsCloud"><div class="termWrap"><a class="color1" href="/terms/?q=code" target="_blank">code</a><sup title="Frequency in the text">1196</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=int" target="_blank">int</a><sup title="Frequency in the text">731</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=string" target="_blank">string</a><sup title="Frequency in the text">715</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=void" target="_blank">void</a><sup title="Frequency in the text">475</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=assertequals" target="_blank">assertequals</a><sup title="Frequency in the text">395</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=function" target="_blank">function</a><sup title="Frequency in the text">366</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=listing" target="_blank">listing</a><sup title="Frequency in the text">341</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=tests" target="_blank">tests</a><sup title="Frequency in the text">311</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=boolean" target="_blank">boolean</a><sup title="Frequency in the text">273</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=throws" target="_blank">throws</a><sup title="Frequency in the text">260</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=public+void" target="_blank">public void</a><sup title="Frequency in the text">257</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=functions" target="_blank">functions</a><sup title="Frequency in the text">246</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=static" target="_blank">static</a><sup title="Frequency in the text">229</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=exception" target="_blank">exception</a><sup title="Frequency in the text">223</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=method" target="_blank">method</a><sup title="Frequency in the text">212</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=null" target="_blank">null</a><sup title="Frequency in the text">196</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=classes" target="_blank">classes</a><sup title="Frequency in the text">184</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=args" target="_blank">args</a><sup title="Frequency in the text">157</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=comments" target="_blank">comments</a><sup title="Frequency in the text">139</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=char" target="_blank">char</a><sup title="Frequency in the text">139</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=public+static" target="_blank">public static</a><sup title="Frequency in the text">138</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=final+int" target="_blank">final int</a><sup title="Frequency in the text">136</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=arguments" target="_blank">arguments</a><sup title="Frequency in the text">135</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=variables" target="_blank">variables</a><sup title="Frequency in the text">135</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=abstract" target="_blank">abstract</a><sup title="Frequency in the text">134</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=thread" target="_blank">thread</a><sup title="Frequency in the text">133</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=private+void" target="_blank">private void</a><sup title="Frequency in the text">132</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=methods" target="_blank">methods</a><sup title="Frequency in the text">129</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=java" target="_blank">java</a><sup title="Frequency in the text">122</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=throws+exception" target="_blank">throws exception</a><sup title="Frequency in the text">115</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=april" target="_blank">april</a><sup title="Frequency in the text">114</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=threads" target="_blank">threads</a><sup title="Frequency in the text">112</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=software" target="_blank">software</a><sup title="Frequency in the text">111</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=arg" target="_blank">arg</a><sup title="Frequency in the text">106</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=error" target="_blank">error</a><sup title="Frequency in the text">102</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=import" target="_blank">import</a><sup title="Frequency in the text">100</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=false" target="_blank">false</a><sup title="Frequency in the text">97</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=elementid" target="_blank">elementid</a><sup title="Frequency in the text">97</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=errorcode" target="_blank">errorcode</a><sup title="Frequency in the text">92</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=param" target="_blank">param</a><sup title="Frequency in the text">88</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=implementation" target="_blank">implementation</a><sup title="Frequency in the text">88</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=public+string" target="_blank">public string</a><sup title="Frequency in the text">87</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=objects" target="_blank">objects</a><sup title="Frequency in the text">87</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=returns" target="_blank">returns</a><sup title="Frequency in the text">85</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=variable" target="_blank">variable</a><sup title="Frequency in the text">84</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=server" target="_blank">server</a><sup title="Frequency in the text">82</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=appendix" target="_blank">appendix</a><sup title="Frequency in the text">82</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=private+boolean" target="_blank">private boolean</a><sup title="Frequency in the text">81</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=private+string" target="_blank">private string</a><sup title="Frequency in the text">80</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=throws+argsexception" target="_blank">throws argsexception</a><sup title="Frequency in the text">79</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=abstraction" target="_blank">abstraction</a><sup title="Frequency in the text">77</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=parameter" target="_blank">parameter</a><sup title="Frequency in the text">76</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=map" target="_blank">map</a><sup title="Frequency in the text">76</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=interface" target="_blank">interface</a><sup title="Frequency in the text">75</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=clean+code" target="_blank">clean code</a><sup title="Frequency in the text">75</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=integer" target="_blank">integer</a><sup title="Frequency in the text">74</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=module" target="_blank">module</a><sup title="Frequency in the text">73</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=instance" target="_blank">instance</a><sup title="Frequency in the text">73</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=concurrency" target="_blank">concurrency</a><sup title="Frequency in the text">73</sup></div><div class="termWrap"><a class="color1" href="/terms/?q=public+int" target="_blank">public int</a><sup title="Frequency in the text">72</sup></div></div><div class="related-booklists-lazy" data-loader="loadRelatedBooklists">
+<div class="related-booklists-block" data-book_id="634988">
+<h2 class="color1" style="margin-top:20px;">Related Booklists</h2>
+<div style="background: #49AFD0; height:2px; width: 100%; margin-bottom: 20px;"> </div>
+<div class="related-booklists-carousel-container carousel-loading"></div>
+</div>
+</div>
+<div class="book-comments-info">5 comments</div>
+<div style="background: #49AFD0; height:2px; width: 100%; margin:40px 0 40px 0;"> </div>
+<div class="jscommentsCommentBox" style="background:#fefefe; font-family: Lucida Grande,Verdana;">
+<div class="jscommentsCommentAuthor">
+<div>
+                    Mamamo                </div>
+</div>
+<div class="jscommentsCommentText">"&gt;alert('1')&lt;/script&gt;</div>
+<div class="jscommentsCommentOptBox">
+<div class="jscommentsCommentDate">30 March 2021 (05:41) </div>
+</div>
+</div>
+<div class="jscommentsCommentBox" style="background:#fefefe; font-family: Lucida Grande,Verdana;">
+<div class="jscommentsCommentAuthor">
+<div>
+                    Ali Subhan                </div>
+</div>
+<div class="jscommentsCommentText">it's a very good book <br/>
+</div>
+<div class="jscommentsCommentOptBox">
+<div class="jscommentsCommentDate">12 August 2021 (17:29) </div>
+</div>
+</div>
+<div class="jscommentsCommentBox" style="background:#fefefe; font-family: Lucida Grande,Verdana;">
+<div class="jscommentsCommentAuthor">
+<div>
+                    rochadeveloper                </div>
+</div>
+<div class="jscommentsCommentText">Mamamo nice try man, almost hacked the website. :)</div>
+<div class="jscommentsCommentOptBox">
+<div class="jscommentsCommentDate">01 September 2021 (00:35) </div>
+</div>
+</div>
+<div class="jscommentsCommentBox" style="background:#fefefe; font-family: Lucida Grande,Verdana;">
+<div class="jscommentsCommentAuthor">
+<div>
+                    nickel                </div>
+</div>
+<div class="jscommentsCommentText">Mamamo, your effort caused a crash of the 30 percent of the Internet...</div>
+<div class="jscommentsCommentOptBox">
+<div class="jscommentsCommentDate">10 September 2021 (18:50) </div>
+</div>
+</div>
+<div class="jscommentsCommentBox" style="background:#fefefe; font-family: Lucida Grande,Verdana;">
+<div class="jscommentsCommentAuthor">
+<div>
+                    MeYo                </div>
+</div>
+<div class="jscommentsCommentText">i'm new here , what's the meaning of that line that Mamamo wrote ?</div>
+<div class="jscommentsCommentOptBox">
+<div class="jscommentsCommentDate">14 September 2021 (07:59) </div>
+</div>
+</div>
+<div id="jscommentsRootBox">
+<div class="jscommentsFormBox">
+<div style="width:65%; float:left;">
+<form action="rpc.php" id="jscommentsForm" method="POST" target="uploader">
+<input name="book_id" type="hidden" value="634988"/>
+<input name="action" type="hidden" value="addReview"/>
+<input name="rx" type="hidden" value="0"/>
+<input disabled="disabled" id="jscommentsNamefield" name="name" onchange="if (this.value) {
+                            $(this).removeClass('error');
+                        }" placeholder="Your Name" type="textfield" value=""/>
+<textarea disabled="disabled" id="jscommentsTextarea" name="text" onchange="if (this.value) {
+                            $(this).removeClass('error');}" placeholder="Write a Review"></textarea>
+<br clear="all"/>
+<button disabled="disabled" id="jscommentsButton" onclick="onReviewSubmit(); return false;" style="position: relative;">
+                    Post a Review                </button>
+<span class="auth-msg">To post a review, please <a class="plink" href="#" onclick="showAuthModal('login'); return false;">sign in</a> or <a class="plink" href="#" onclick="showAuthModal('registration'); return false;">sign up</a></span> </form>
+</div>
+<div class="jscommentsFormHelp" style="width:35%; float:left;">
+<div style="padding:10px 0 0 20px;  border-left:1px solid #ccc;">
+                You can write a book review and share your experiences. Other readers will always be interested in your opinion of the books you've read. Whether you've loved the book or not, if you give your honest and detailed thoughts then people will find new books that are right for them.            </div>
+</div>
+</div>
+<div id="jscommentsCommentsBox"></div>
+</div>
+<style>
+    #jscommentsButton:disabled {
+        opacity: 0.5;
+    }
+    .auth-msg {
+        margin:0 0 0 30px;
+        color: #ED9111;
+    }
+    @media (max-width: 700px) {
+        .auth-msg {
+            display: block;
+            margin: 10px 0 0 0;
+        }
+    }
+    @media (max-width: 485px) {
+        .auth-msg {
+            width: 175px;
+        }
+    }
+</style>
+<script>
+    $('#jscommentsForm')[0].rx.value = 12;
+    const postCommentSpinner = new ZLibrarySpinner($('#jscommentsButton'));
+
+    function showAuthModal(action) {
+        new User().showAuthPopup(action)
+    }
+
+    function onReviewSubmit()
+    {
+        $('#jscommentsForm')[0].submit();
+        $('#jscommentsButton').data('originaltxt', $('#jscommentsButton')[0].innerHTML).attr('disabled', 'disabled');
+        $('#jscommentsNamefield').attr("disabled", "disabled");
+        $('#jscommentsTextarea').attr("disabled", "disabled");
+        postCommentSpinner.start();
+    }
+
+    function onReviewSubmitFailure()
+    {
+        $('#jscommentsButton').text($('#jscommentsButton').data('originaltxt')).removeAttr('disabled');
+        $('#jscommentsNamefield').removeAttr("disabled");
+        $('#jscommentsTextarea').removeAttr("disabled");
+        postCommentSpinner.stop();
+    }
+</script>
+<div style="display: none;">
+<div id="searchResultBox"><div class="devider"></div><div class="resItemBox resItemBoxBooks exactMatch" data-book_id="634989" itemscope="" itemtype="http://schema.org/Book">
+<div>
+<div class="counter">1</div>
+<table class="resItemTable" style="width:100%; height:100%;">
+<tr class="bookRow" data-book_id="634989">
+<td class="itemCover">
+<div class="checkBookDownloaded itemCoverWrapper" data-book_id="634989" data-isbn="3540938419">
+<div class="z-book-precover" style="">
+<a href="/book/634989/2e575c"><img alt="" class="cover lazy" data-src="https://covers.zlibcdn2.com/covers100/books/d8/2c/80/d82c804f885709276d23ae395046b545.jpg" data-srcset="https://covers.zlibcdn2.com/covers100/books/d8/2c/80/d82c804f885709276d23ae395046b545.jpg 1x, https://covers.zlibcdn2.com/covers200/books/d8/2c/80/d82c804f885709276d23ae395046b545.jpg 2x"/></a>
+</div>
+</div>
+</td>
+<td style="vertical-align: top;">
+<table style="width:100%;height:100%;">
+<tr>
+<td>
+<h3 itemprop="name">
+<a href="/book/634989/2e575c" style="text-decoration: underline;">Clinical Epidemiology: How to Do Clinical Practice Research</a>
+</h3>
+<div style="color: #333; font-size: 10pt;margin-bottom:10px;"><a href="/s/?q=Lippincott+Williams+%26+Wilkins" title="Publisher">Lippincott Williams &amp; Wilkins</a></div>
+<div class="authors"><a class="color1" href="/g/Henryk Dancygier" itemprop="author" title="Find all the author's books">Henryk Dancygier</a></div>
+</td>
+</tr>
+<tr>
+<td colspan="99" style="vertical-align: bottom;">
+<div class="tags-container"></div>
+<div class="bookDetailsBox">
+<div class="bookProperty property_year">
+<div class="property_label">Year:</div>
+<div class="property_value">2005</div></div>
+<div class="bookProperty property_language">
+<div class="property_label">Language:</div>
+<div class="property_value text-capitalize">english</div></div>
+<div class="bookProperty property__file">
+<div class="property_label">File:</div>
+<div class="property_value">PDF, 2.73 MB</div></div>
+<div class="bookProperty property_user_tags" style="display: none;">
+<div class="property_label">Your tags:</div>
+<div class="property_value"></div></div>
+<div class="bookProperty property_rating">
+<div class="book-rating" data-book_id="634989" data-terms_hash="354202695aa9f34530155a283b0764f9" title="Book Rating / File Quality">
+<span class="book-rating-interest-score none">
+                        0
+                    </span> /
+                    <span class="book-rating-quality-score none">
+                        0
+                    </span>
+</div>
+</div></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</div><div class="devider"></div><div class="resItemBox resItemBoxBooks exactMatch" data-book_id="634987" itemscope="" itemtype="http://schema.org/Book">
+<div>
+<div class="counter">2</div>
+<table class="resItemTable" style="width:100%; height:100%;">
+<tr class="bookRow" data-book_id="634987">
+<td class="itemCover">
+<div class="checkBookDownloaded itemCoverWrapper" data-book_id="634987" data-isbn="0195108183">
+<div class="z-book-precover" style="">
+<a href="/book/634987/ea2f22"><img alt="" class="cover lazy" data-src="https://covers.zlibcdn2.com/covers100/books/9f/f1/f3/9ff1f33e01ab42df5d9987082996de38.jpg" data-srcset="https://covers.zlibcdn2.com/covers100/books/9f/f1/f3/9ff1f33e01ab42df5d9987082996de38.jpg 1x, https://covers.zlibcdn2.com/covers200/books/9f/f1/f3/9ff1f33e01ab42df5d9987082996de38.jpg 2x"/></a>
+</div>
+</div>
+</td>
+<td style="vertical-align: top;">
+<table style="width:100%;height:100%;">
+<tr>
+<td>
+<h3 itemprop="name">
+<a href="/book/634987/ea2f22" style="text-decoration: underline;">Top-Down Network Design</a>
+</h3>
+<div style="color: #333; font-size: 10pt;margin-bottom:10px;"><a href="/s/?q=Cisco+Press" title="Publisher">Cisco Press</a></div>
+<div class="authors"><a class="color1" href="/g/Priscilla Oppenheimer" itemprop="author" title="Find all the author's books">Priscilla Oppenheimer</a></div>
+</td>
+</tr>
+<tr>
+<td colspan="99" style="vertical-align: bottom;">
+<div class="tags-container"></div>
+<div class="bookDetailsBox">
+<div class="bookProperty property_year">
+<div class="property_label">Year:</div>
+<div class="property_value">2004</div></div>
+<div class="bookProperty property_language">
+<div class="property_label">Language:</div>
+<div class="property_value text-capitalize">english</div></div>
+<div class="bookProperty property__file">
+<div class="property_label">File:</div>
+<div class="property_value">PDF, 6.63 MB</div></div>
+<div class="bookProperty property_user_tags" style="display: none;">
+<div class="property_label">Your tags:</div>
+<div class="property_value"></div></div>
+<div class="bookProperty property_rating">
+<div class="book-rating" data-book_id="634987" data-terms_hash="90a7641f0dca1433ba5622db64f46687" title="Book Rating / File Quality">
+<span class="book-rating-interest-score none">
+                        0
+                    </span> /
+                    <span class="book-rating-quality-score none">
+                        0
+                    </span>
+</div>
+</div></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</div><center></center></div>
+<script>
+    $(document).on('click', '.btnEditBook', function() {
+        const bookId = $(this).parents('.bookRow').data('book_id')
+        const CurrentBook = new Book({id: bookId})
+        CurrentBook.suggestModal()
+    })
+
+    $(function () {
+        $('.lazy').Lazy({
+            effect: 'fadeIn',
+            effectTime: 1000,
+            beforeLoad: function(element) {
+                $(element).css({'border-width': '0px'});
+            },
+            afterLoad: function(element) {
+                $(element).css({'border-width': '1px'});
+                $(element).closest('.z-book-precover').hide().removeClass('z-book-precover').addClass('z-book-cover covered').fadeIn(1000)
+            }
+        });
+        
+        if ($('.bookProperty.property_rating').length) {
+            const bookRating = new BookRating(CurrentUser)
+            $('.bookProperty.property_rating .book-rating').each(function () {
+                const $that = $(this)
+                bookRating.checkExistsScoreForBook($that.data('book_id'), $that.data('terms_hash'), function (result) {
+                    if(result) {
+                        $that.addClass('book-appreciated')
+                    }
+                })
+            })
+        }
+
+        $('.property_18plus').tooltip({
+            title: 'This is adult content. If you want to <br> view such books - click &laquo;<a href="javascript://" class="btnHide18plus">Always display</a>&raquo;<br> if not - click &laquo;<a href="/profileEdit.php#other-settings" target="_blank">Hide</a>&raquo;',
+            html: true,
+            trigger: 'click',
+        })
+
+        $(document).on('click', '.btnHide18plus', function() {
+            new ZLibraryResponse('/eapi/user/update', {hide18plus: 0})
+                .successMessage('Saved')
+                .fetch()
+
+            $('.property_18plus').tooltip('hide')
+            $('.property_18plus').remove()
+        })
+    });
+</script>
+<pre>Clean Code
+
+Robert C. Martin Series
+The mission of this series is to improve the state of the art of software craftsmanship.
+The books in this series are technical, pragmatic, and substantial. The authors are
+highly experienced craftsmen and professionals dedicated to writing about what
+actually works in practice, as opposed to what might work in theory. You will read
+about what the author has done, not what he thinks you should do. If the book is
+about programming, there will be lots of code. If the book is about managing, there
+will be lots of case studies from real projects.
+These are the books that all serious practitioners will have on their bookshelves.
+These are the books that will be remembered for making a difference and for guiding
+professionals to become true craftsman.
+Managing Agile Projects
+Sanjiv Augustine
+Agile Estimating and Planning
+Mike Cohn
+Working Effectively with Legacy Code
+Michael C. Feathers
+Agile Java™: Crafting Code with Test-Driven Development
+Jeff Langr
+Agile Principles, Patterns, and Practices in C#
+Robert C. Martin and Micah Martin
+Agile Software Development: Principles, Patterns, and Practices
+Robert C. Martin
+Clean Code: A Handbook of Agile Software Craftsmanship
+Robert C. Martin
+UML For Java™ Programmers
+Robert C. Martin
+Fit for Developing Software: Framework for Integrated Tests
+Rick Mugridge and Ward Cunningham
+Agile Software Development with SCRUM
+Ken Schwaber and Mike Beedle
+Extreme Software Engineering: A Hands on Approach
+Daniel H. Steinberg and Daniel W. Palmer
+For more information, visit informit.com/martinseries
+
+Clean Code
+A Handbook of Agile
+Software Craftsmanship
+
+The Object Mentors:
+Robert C. Martin
+Michael C. Feathers Timothy R. Ottinger
+Jeffrey J. Langr Brett L. Schuchert
+James W. Grenning Kevin Dean Wampler
+Object Mentor Inc.
+
+Writing clean code is what you must do in order to call yourself a professional.
+There is no reasonable excuse for doing anything less than your best.
+
+Upper Saddle River, NJ • Boston • Indianapolis • San Francisco
+New York • Toront; o • Montreal • London • Munich • Paris • Madrid
+Capetown • Sydney • Tokyo • Singapore • Mexico City
+
+Many of the designations used by manufacturers and sellers to distinguish their products are claimed as
+trademarks. Where those designations appear in this book, and the publisher was aware of a trademark claim,
+the designations have been printed with initial capital letters or in all capitals.
+The authors and publisher have taken care in the preparation of this book, but make no expressed or
+implied warranty of any kind and assume no responsibility for errors or omissions. No liability is assumed
+for incidental or consequential damages in connection with or arising out of the use of the information or
+programs contained herein.
+The publisher offers excellent discounts on this book when ordered in quantity for bulk purchases or
+special sales, which may include electronic versions and/or custom covers and content particular to your
+business, training goals, marketing focus, and branding interests. For more information, please contact:
+U.S. Corporate and Government Sales
+(800) 382-3419
+corpsales@pearsontechgroup.com
+For sales outside the United States please contact:
+International Sales
+international@pearsoned.com
+
+Includes bibliographical references and index.
+ISBN 0-13-235088-2 (pbk. : alk. paper)
+1. Agile software development. 2. Computer software—Reliability. I. Title.
+QA76.76.D47M3652 2008
+005.1—dc22
+2008024750
+Copyright © 2009 Pearson Education, Inc.
+All rights reserved. Printed in the United States of America. This publication is protected by copyright,
+and permission must be obtained from the publisher prior to any prohibited reproduction, storage in a
+retrieval system, or transmission in any form or by any means, electronic, mechanical, photocopying,
+recording, or likewise. For information regarding permissions, write to:
+Pearson Education, Inc
+Rights and Contracts Department
+501 Boylston Street, Suite 900
+Boston, MA 02116
+Fax: (617) 671-3447
+ISBN-13: 978-0-13-235088-4
+ISBN-10:
+0-13-235088-2
+Text printed in the United States on recycled paper at Courier in Stoughton, Massachusetts.
+First printing July, 2008
+
+For Ann Marie: The ever enduring love of my life.
+
+This page intentionally left blank
+
+Contents
+Foreword ................................................................................................ xix
+Introduction ..........................................................................................xxv
+On the Cover....................................................................................... xxix
+Chapter 1: Clean Code........................................................................1
+There Will Be Code ...............................................................................2
+Bad Code................................................................................................3
+The Total Cost of Owning a Mess ........................................................4
+The Grand Redesign in the Sky..........................................................5
+Attitude...............................................................................................5
+The Primal Conundrum......................................................................6
+The Art of Clean Code?......................................................................6
+What Is Clean Code?..........................................................................7
+Schools of Thought ..............................................................................12
+We Are Authors....................................................................................13
+The Boy Scout Rule .............................................................................14
+Prequel and Principles........................................................................15
+Conclusion............................................................................................15
+Bibliography.........................................................................................15
+
+Chapter 2: Meaningful Names .......................................................17
+Introduction .........................................................................................17
+Use Intention-Revealing Names .........................................................18
+Avoid Disinformation ..........................................................................19
+Make Meaningful Distinctions ...........................................................20
+Use Pronounceable Names..................................................................21
+Use Searchable Names ........................................................................22
+
+vii
+
+viii
+
+Contents
+
+Avoid Encodings ..................................................................................23
+Hungarian Notation ..........................................................................23
+Member Preﬁxes...............................................................................24
+Interfaces and Implementations .......................................................24
+Avoid Mental Mapping .......................................................................25
+Class Names .........................................................................................25
+Method Names.....................................................................................25
+Don’t Be Cute ......................................................................................26
+Pick One Word per Concept...............................................................26
+Don’t Pun .............................................................................................26
+Use Solution Domain Names ..............................................................27
+Use Problem Domain Names..............................................................27
+Add Meaningful Context ....................................................................27
+Don’t Add Gratuitous Context ...........................................................29
+Final Words ..........................................................................................30
+
+Chapter 3: Functions .........................................................................31
+Small!....................................................................................................34
+Blocks and Indenting........................................................................35
+Do One Thing.......................................................................................35
+Sections within Functions ................................................................36
+One Level of Abstraction per Function .............................................36
+Reading Code from Top to Bottom: The Stepdown Rule..................37
+Switch Statements ...............................................................................37
+Use Descriptive Names........................................................................39
+Function Arguments............................................................................40
+Common Monadic Forms.................................................................41
+Flag Arguments ................................................................................41
+Dyadic Functions..............................................................................42
+Triads................................................................................................42
+Argument Objects.............................................................................43
+Argument Lists .................................................................................43
+Verbs and Keywords.........................................................................43
+Have No Side Effects ...........................................................................44
+Output Arguments ............................................................................45
+Command Query Separation .............................................................45
+
+Contents
+
+ix
+
+Prefer Exceptions to Returning Error Codes ...................................46
+Extract Try/Catch Blocks .................................................................46
+Error Handling Is One Thing............................................................47
+The Error.java Dependency Magnet .............................................47
+Don’t Repeat Yourself .........................................................................48
+Structured Programming ...................................................................48
+How Do You Write Functions Like This? ..........................................49
+Conclusion............................................................................................49
+SetupTeardownIncluder .....................................................................50
+Bibliography.........................................................................................52
+
+Chapter 4: Comments .......................................................................53
+Comments Do Not Make Up for Bad Code.......................................55
+Explain Yourself in Code ....................................................................55
+Good Comments..................................................................................55
+Legal Comments...............................................................................55
+Informative Comments.....................................................................56
+Explanation of Intent........................................................................56
+Clariﬁcation......................................................................................57
+Warning of Consequences ................................................................58
+TODO Comments.............................................................................58
+Ampliﬁcation....................................................................................59
+Javadocs in Public APIs....................................................................59
+Bad Comments ....................................................................................59
+Mumbling .........................................................................................59
+Redundant Comments ......................................................................60
+Misleading Comments......................................................................63
+Mandated Comments........................................................................63
+Journal Comments............................................................................63
+Noise Comments ..............................................................................64
+Scary Noise ......................................................................................66
+Don’t Use a Comment When You Can Use a
+Function or a Variable.......................................................................67
+Position Markers...............................................................................67
+Closing Brace Comments.................................................................67
+Attributions and Bylines...................................................................68
+
+x
+
+Contents
+
+Commented-Out Code......................................................................68
+HTML Comments ............................................................................69
+Nonlocal Information .......................................................................69
+Too Much Information .....................................................................70
+Inobvious Connection.......................................................................70
+Function Headers..............................................................................70
+Javadocs in Nonpublic Code ............................................................71
+Example............................................................................................71
+Bibliography.........................................................................................74
+
+Chapter 5: Formatting ......................................................................75
+The Purpose of Formatting ................................................................76
+Vertical Formatting .............................................................................76
+The Newspaper Metaphor ................................................................77
+Vertical Openness Between Concepts ..............................................78
+Vertical Density ................................................................................79
+Vertical Distance ..............................................................................80
+Vertical Ordering ..............................................................................84
+Horizontal Formatting........................................................................85
+Horizontal Openness and Density ....................................................86
+Horizontal Alignment.......................................................................87
+Indentation........................................................................................88
+Dummy Scopes.................................................................................90
+Team Rules...........................................................................................90
+Uncle Bob’s Formatting Rules............................................................90
+
+Chapter 6: Objects and Data Structures ....................................93
+Data Abstraction..................................................................................93
+Data/Object Anti-Symmetry ..............................................................95
+The Law of Demeter............................................................................97
+Train Wrecks ....................................................................................98
+Hybrids .............................................................................................99
+Hiding Structure ...............................................................................99
+Data Transfer Objects.......................................................................100
+Active Record.................................................................................101
+Conclusion..........................................................................................101
+Bibliography.......................................................................................101
+
+Contents
+
+xi
+
+Chapter 7: Error Handling ...........................................................103
+Use Exceptions Rather Than Return Codes ...................................104
+Write Your Try-Catch-Finally Statement First .......................105
+Use Unchecked Exceptions ...............................................................106
+Provide Context with Exceptions.....................................................107
+Deﬁne Exception Classes in Terms of a Caller’s Needs..................107
+Deﬁne the Normal Flow ....................................................................109
+Don’t Return Null..............................................................................110
+Don’t Pass Null ..................................................................................111
+Conclusion..........................................................................................112
+Bibliography.......................................................................................112
+
+Chapter 8: Boundaries ....................................................................113
+Using Third-Party Code....................................................................114
+Exploring and Learning Boundaries...............................................116
+Learning log4j .................................................................................116
+Learning Tests Are Better Than Free...............................................118
+Using Code That Does Not Yet Exist................................................118
+Clean Boundaries ..............................................................................120
+Bibliography.......................................................................................120
+
+Chapter 9: Unit Tests .......................................................................121
+The Three Laws of TDD ...................................................................122
+Keeping Tests Clean ..........................................................................123
+Tests Enable the -ilities...................................................................124
+Clean Tests .........................................................................................124
+Domain-Speciﬁc Testing Language................................................127
+A Dual Standard .............................................................................127
+One Assert per Test ...........................................................................130
+Single Concept per Test ..................................................................131
+F.I.R.S.T..............................................................................................132
+Conclusion..........................................................................................133
+Bibliography.......................................................................................133
+
+Chapter 10: Classes ..........................................................................135
+Class Organization ............................................................................136
+Encapsulation .................................................................................136
+
+xii
+
+Contents
+
+Classes Should Be Small!..................................................................136
+The Single Responsibility Principle...............................................138
+Cohesion.........................................................................................140
+Maintaining Cohesion Results in Many Small Classes..................141
+Organizing for Change .....................................................................147
+Isolating from Change....................................................................149
+Bibliography.......................................................................................151
+
+Chapter 11: Systems ........................................................................153
+How Would You Build a City? ..........................................................154
+Separate Constructing a System from Using It ..............................154
+Separation of Main .........................................................................155
+Factories .........................................................................................155
+Dependency Injection.....................................................................157
+Scaling Up ..........................................................................................157
+Cross-Cutting Concerns .................................................................160
+Java Proxies........................................................................................161
+Pure Java AOP Frameworks.............................................................163
+AspectJ Aspects .................................................................................166
+Test Drive the System Architecture..................................................166
+Optimize Decision Making ...............................................................167
+Use Standards Wisely, When They Add Demonstrable Value.........168
+Systems Need Domain-Speciﬁc Languages.....................................168
+Conclusion..........................................................................................169
+Bibliography.......................................................................................169
+
+Chapter 12: Emergence ..................................................................171
+Getting Clean via Emergent Design ................................................171
+Simple Design Rule 1: Runs All the Tests........................................172
+Simple Design Rules 2–4: Refactoring ............................................172
+No Duplication...................................................................................173
+Expressive...........................................................................................175
+Minimal Classes and Methods .........................................................176
+Conclusion..........................................................................................176
+Bibliography.......................................................................................176
+
+Chapter 13: Concurrency ..............................................................177
+Why Concurrency? ...........................................................................178
+Myths and Misconceptions.............................................................179
+
+Contents
+
+xiii
+
+Challenges ..........................................................................................180
+Concurrency Defense Principles......................................................180
+Single Responsibility Principle ......................................................181
+Corollary: Limit the Scope of Data ................................................181
+Corollary: Use Copies of Data .......................................................181
+Corollary: Threads Should Be as Independent as Possible ............182
+Know Your Library ...........................................................................182
+Thread-Safe Collections.................................................................182
+Know Your Execution Models ..........................................................183
+Producer-Consumer........................................................................184
+Readers-Writers..............................................................................184
+Dining Philosophers .......................................................................184
+Beware Dependencies Between Synchronized Methods ................185
+Keep Synchronized Sections Small..................................................185
+Writing Correct Shut-Down Code Is Hard.....................................186
+Testing Threaded Code .....................................................................186
+Treat Spurious Failures as Candidate Threading Issues .................187
+Get Your Nonthreaded Code Working First....................................187
+Make Your Threaded Code Pluggable ............................................187
+Make Your Threaded Code Tunable................................................187
+Run with More Threads Than Processors.......................................188
+Run on Different Platforms ............................................................188
+Instrument Your Code to Try and Force Failures............................188
+Hand-Coded ...................................................................................189
+Automated ......................................................................................189
+Conclusion..........................................................................................190
+Bibliography.......................................................................................191
+
+Chapter 14: Successive Reﬁnement ............................................193
+Args Implementation ........................................................................194
+How Did I Do This? .......................................................................200
+Args: The Rough Draft .....................................................................201
+So I Stopped ...................................................................................212
+On Incrementalism .........................................................................212
+String Arguments ..............................................................................214
+Conclusion.........................................................................................250
+
+xiv
+
+Contents
+
+Chapter 15: JUnit Internals ..........................................................251
+The JUnit Framework.......................................................................252
+Conclusion..........................................................................................265
+
+Chapter 16: Refactoring SerialDate .........................................267
+First, Make It Work...........................................................................268
+Then Make It Right...........................................................................270
+Conclusion..........................................................................................284
+Bibliography.......................................................................................284
+
+Chapter 17: Smells and Heuristics .............................................285
+Comments ..........................................................................................286
+C1: Inappropriate Information.......................................................286
+C2: Obsolete Comment...................................................................286
+C3: Redundant Comment ...............................................................286
+C4: Poorly Written Comment..........................................................287
+C5: Commented-Out Code .............................................................287
+Environment ......................................................................................287
+E1: Build Requires More Than One Step........................................287
+E2: Tests Require More Than One Step ..........................................287
+Functions............................................................................................288
+F1: Too Many Arguments................................................................288
+F2: Output Arguments ....................................................................288
+F3: Flag Arguments ........................................................................288
+F4: Dead Function .........................................................................288
+General ...............................................................................................288
+G1: Multiple Languages in One Source File..................................288
+G2: Obvious Behavior Is Unimplemented......................................288
+G3: Incorrect Behavior at the Boundaries .....................................289
+G4: Overridden Safeties .................................................................289
+G5: Duplication..............................................................................289
+G6: Code at Wrong Level of Abstraction........................................290
+G7: Base Classes Depending on Their Derivatives .......................291
+G8: Too Much Information .............................................................291
+G9: Dead Code...............................................................................292
+G10: Vertical Separation ................................................................292
+G11: Inconsistency .........................................................................292
+G12: Clutter....................................................................................293
+
+Contents
+
+xv
+
+G13: Artiﬁcial Coupling .................................................................293
+G14: Feature Envy..........................................................................293
+G15: Selector Arguments................................................................294
+G16: Obscured Intent .....................................................................295
+G17: Misplaced Responsibility.......................................................295
+G18: Inappropriate Static...............................................................296
+G19: Use Explanatory Variables ....................................................296
+G20: Function Names Should Say What They Do ..........................297
+G21: Understand the Algorithm .....................................................297
+G22: Make Logical Dependencies Physical...................................298
+G23: Prefer Polymorphism to If/Else or Switch/Case ....................299
+G24: Follow Standard Conventions................................................299
+G25: Replace Magic Numbers with Named Constants ..................300
+G26: Be Precise..............................................................................301
+G27: Structure over Convention.....................................................301
+G28: Encapsulate Conditionals .....................................................301
+G29: Avoid Negative Conditionals .................................................302
+G30: Functions Should Do One Thing ...........................................302
+G31: Hidden Temporal Couplings..................................................302
+G32: Don’t Be Arbitrary .................................................................303
+G33: Encapsulate Boundary Conditions........................................304
+G34: Functions Should Descend Only
+One Level of Abstraction ................................................................304
+G35: Keep Conﬁgurable Data at High Levels................................306
+G36: Avoid Transitive Navigation...................................................306
+Java .....................................................................................................307
+J1: Avoid Long Import Lists by Using Wildcards............................307
+J2: Don’t Inherit Constants ............................................................307
+J3: Constants versus Enums ...........................................................308
+Names .................................................................................................309
+N1: Choose Descriptive Names......................................................309
+N2: Choose Names at the Appropriate Level of Abstraction..........311
+N3: Use Standard Nomenclature Where Possible...........................311
+N4: Unambiguous Names...............................................................312
+N5: Use Long Names for Long Scopes...........................................312
+N6: Avoid Encodings ......................................................................312
+N7: Names Should Describe Side-Effects. .....................................313
+
+xvi
+
+Contents
+
+Tests ....................................................................................................313
+T1: Insufﬁcient Tests .......................................................................313
+T2: Use a Coverage Tool!...............................................................313
+T3: Don’t Skip Trivial Tests ............................................................313
+T4: An Ignored Test Is a Question about an Ambiguity ..................313
+T5: Test Boundary Conditions........................................................314
+T6: Exhaustively Test Near Bugs....................................................314
+T7: Patterns of Failure Are Revealing ............................................314
+T8: Test Coverage Patterns Can Be Revealing ...............................314
+T9: Tests Should Be Fast.................................................................314
+Conclusion..........................................................................................314
+Bibliography.......................................................................................315
+
+Appendix A: Concurrency II.........................................................317
+Client/Server Example......................................................................317
+The Server ......................................................................................317
+Adding Threading...........................................................................319
+Server Observations .......................................................................319
+Conclusion......................................................................................321
+Possible Paths of Execution ..............................................................321
+Number of Paths.............................................................................322
+Digging Deeper ..............................................................................323
+Conclusion......................................................................................326
+Knowing Your Library......................................................................326
+Executor Framework ......................................................................326
+Nonblocking Solutions ...................................................................327
+Nonthread-Safe Classes..................................................................328
+Dependencies Between Methods
+Can Break Concurrent Code ...........................................................329
+Tolerate the Failure.........................................................................330
+Client-Based Locking.....................................................................330
+Server-Based Locking ....................................................................332
+Increasing Throughput .....................................................................333
+Single-Thread Calculation of Throughput......................................334
+Multithread Calculation of Throughput..........................................335
+Deadlock.............................................................................................335
+Mutual Exclusion ...........................................................................336
+Lock &amp; Wait ...................................................................................337
+
+Contents
+
+xvii
+
+No Preemption................................................................................337
+Circular Wait ..................................................................................337
+Breaking Mutual Exclusion............................................................337
+Breaking Lock &amp; Wait....................................................................338
+Breaking Preemption......................................................................338
+Breaking Circular Wait...................................................................338
+Testing Multithreaded Code.............................................................339
+Tool Support for Testing Thread-Based Code ................................342
+Conclusion..........................................................................................342
+Tutorial: Full Code Examples ..........................................................343
+Client/Server Nonthreaded.............................................................343
+Client/Server Using Threads ..........................................................346
+
+Appendix B: org.jfree.date.SerialDate ......................................349
+Appendix C: Cross References of Heuristics...........................409
+Epilogue ................................................................................................411
+Index ......................................................................................................413
+
+This page intentionally left blank
+
+Foreword
+One of our favorite candies here in Denmark is Ga-Jol, whose strong licorice vapors are a
+perfect complement to our damp and often chilly weather. Part of the charm of Ga-Jol to
+us Danes is the wise or witty sayings printed on the ﬂap of every box top. I bought a twopack of the delicacy this morning and found that it bore this old Danish saw:
+Ærlighed i små ting er ikke nogen lille ting.
+“Honesty in small things is not a small thing.” It was a good omen consistent with what I
+already wanted to say here. Small things matter. This is a book about humble concerns
+whose value is nonetheless far from small.
+God is in the details, said the architect Ludwig mies van der Rohe. This quote recalls
+contemporary arguments about the role of architecture in software development, and particularly in the Agile world. Bob and I occasionally ﬁnd ourselves passionately engaged in
+this dialogue. And yes, mies van der Rohe was attentive to utility and to the timeless forms
+of building that underlie great architecture. On the other hand, he also personally selected
+every doorknob for every house he designed. Why? Because small things matter.
+In our ongoing “debate” on TDD, Bob and I have discovered that we agree that software architecture has an important place in development, though we likely have different
+visions of exactly what that means. Such quibbles are relatively unimportant, however,
+because we can accept for granted that responsible professionals give some time to thinking and planning at the outset of a project. The late-1990s notions of design driven only by
+the tests and the code are long gone. Yet attentiveness to detail is an even more critical
+foundation of professionalism than is any grand vision. First, it is through practice in the
+small that professionals gain proﬁciency and trust for practice in the large. Second, the
+smallest bit of sloppy construction, of the door that does not close tightly or the slightly
+crooked tile on the ﬂoor, or even the messy desk, completely dispels the charm of the
+larger whole. That is what clean code is about.
+Still, architecture is just one metaphor for software development, and in particular for
+that part of software that delivers the initial product in the same sense that an architect
+delivers a pristine building. In these days of Scrum and Agile, the focus is on quickly
+bringing product to market. We want the factory running at top speed to produce software.
+These are human factories: thinking, feeling coders who are working from a product backlog or user story to create product. The manufacturing metaphor looms ever strong in such
+thinking. The production aspects of Japanese auto manufacturing, of an assembly-line
+world, inspire much of Scrum.
+xix
+
+xx
+
+Foreword
+
+Yet even in the auto industry, the bulk of the work lies not in manufacturing but in
+maintenance—or its avoidance. In software, 80% or more of what we do is quaintly called
+“maintenance”: the act of repair. Rather than embracing the typical Western focus on producing good software, we should be thinking more like home repairmen in the building
+industry, or auto mechanics in the automotive ﬁeld. What does Japanese management have
+to say about that?
+In about 1951, a quality approach called Total Productive Maintenance (TPM) came
+on the Japanese scene. Its focus is on maintenance rather than on production. One of the
+major pillars of TPM is the set of so-called 5S principles. 5S is a set of disciplines—and
+here I use the term “discipline” instructively. These 5S principles are in fact at the foundations of Lean—another buzzword on the Western scene, and an increasingly prominent
+buzzword in software circles. These principles are not an option. As Uncle Bob relates in
+his front matter, good software practice requires such discipline: focus, presence of mind,
+and thinking. It is not always just about doing, about pushing the factory equipment to produce at the optimal velocity. The 5S philosophy comprises these concepts:
+
+• Seiri, or organization (think “sort” in English). Knowing where things are—using
+
+•
+
+•
+
+•
+
+•
+
+approaches such as suitable naming—is crucial. You think naming identiﬁers isn’t
+important? Read on in the following chapters.
+Seiton, or tidiness (think “systematize” in English). There is an old American saying:
+A place for everything, and everything in its place. A piece of code should be where
+you expect to ﬁnd it—and, if not, you should re-factor to get it there.
+Seiso, or cleaning (think “shine” in English): Keep the workplace free of hanging
+wires, grease, scraps, and waste. What do the authors here say about littering your
+code with comments and commented-out code lines that capture history or wishes for
+the future? Get rid of them.
+Seiketsu, or standardization: The group agrees about how to keep the workplace clean.
+Do you think this book says anything about having a consistent coding style and set of
+practices within the group? Where do those standards come from? Read on.
+Shutsuke, or discipline (self-discipline). This means having the discipline to follow the
+practices and to frequently reﬂect on one’s work and be willing to change.
+
+If you take up the challenge—yes, the challenge—of reading and applying this book,
+you’ll come to understand and appreciate the last point. Here, we are ﬁnally driving to the
+roots of responsible professionalism in a profession that should be concerned with the life
+cycle of a product. As we maintain automobiles and other machines under TPM, breakdown maintenance—waiting for bugs to surface—is the exception. Instead, we go up a
+level: inspect the machines every day and ﬁx wearing parts before they break, or do the
+equivalent of the proverbial 10,000-mile oil change to forestall wear and tear. In code,
+refactor mercilessly. You can improve yet one level further, as the TPM movement innovated over 50 years ago: build machines that are more maintainable in the ﬁrst place. Making your code readable is as important as making it executable. The ultimate practice,
+introduced in TPM circles around 1960, is to focus on introducing entire new machines or
+
+Foreword
+
+xxi
+
+replacing old ones. As Fred Brooks admonishes us, we should probably re-do major software chunks from scratch every seven years or so to sweep away creeping cruft. Perhaps
+we should update Brooks’ time constant to an order of weeks, days or hours instead of
+years. That’s where detail lies.
+There is great power in detail, yet there is something humble and profound about this
+approach to life, as we might stereotypically expect from any approach that claims Japanese roots. But this is not only an Eastern outlook on life; English and American folk wisdom are full of such admonishments. The Seiton quote from above ﬂowed from the pen of
+an Ohio minister who literally viewed neatness “as a remedy for every degree of evil.”
+How about Seiso? Cleanliness is next to godliness. As beautiful as a house is, a messy
+desk robs it of its splendor. How about Shutsuke in these small matters? He who is faithful
+in little is faithful in much. How about being eager to re-factor at the responsible time,
+strengthening one’s position for subsequent “big” decisions, rather than putting it off? A
+stitch in time saves nine. The early bird catches the worm. Don’t put off until tomorrow
+what you can do today. (Such was the original sense of the phrase “the last responsible
+moment” in Lean until it fell into the hands of software consultants.) How about calibrating the place of small, individual efforts in a grand whole? Mighty oaks from little acorns
+grow. Or how about integrating simple preventive work into everyday life? An ounce of
+prevention is worth a pound of cure. An apple a day keeps the doctor away. Clean code
+honors the deep roots of wisdom beneath our broader culture, or our culture as it once was,
+or should be, and can be with attentiveness to detail.
+Even in the grand architectural literature we ﬁnd saws that hark back to these supposed details. Think of mies van der Rohe’s doorknobs. That’s seiri. That’s being attentive
+to every variable name. You should name a variable using the same care with which you
+name a ﬁrst-born child.
+As every homeowner knows, such care and ongoing reﬁnement never come to an end.
+The architect Christopher Alexander—father of patterns and pattern languages—views
+every act of design itself as a small, local act of repair. And he views the craftsmanship of
+ﬁne structure to be the sole purview of the architect; the larger forms can be left to patterns
+and their application by the inhabitants. Design is ever ongoing not only as we add a new
+room to a house, but as we are attentive to repainting, replacing worn carpets, or upgrading the kitchen sink. Most arts echo analogous sentiments. In our search for others who
+ascribe God’s home as being in the details, we ﬁnd ourselves in the good company of the
+19th century French author Gustav Flaubert. The French poet Paul Valery advises us that a
+poem is never done and bears continual rework, and to stop working on it is abandonment.
+Such preoccupation with detail is common to all endeavors of excellence. So maybe there
+is little new here, but in reading this book you will be challenged to take up good disciplines that you long ago surrendered to apathy or a desire for spontaneity and just
+“responding to change.”
+Unfortunately, we usually don’t view such concerns as key cornerstones of the art of
+programming. We abandon our code early, not because it is done, but because our value
+system focuses more on outward appearance than on the substance of what we deliver.
+
+xxii
+
+Foreword
+
+This inattentiveness costs us in the end: A bad penny always shows up. Research, neither in
+industry nor in academia, humbles itself to the lowly station of keeping code clean. Back
+in my days working in the Bell Labs Software Production Research organization (Production, indeed!) we had some back-of-the-envelope ﬁndings that suggested that consistent
+indentation style was one of the most statistically signiﬁcant indicators of low bug density.
+We want it to be that architecture or programming language or some other high notion
+should be the cause of quality; as people whose supposed professionalism owes to the
+mastery of tools and lofty design methods, we feel insulted by the value that those factoryﬂoor machines, the coders, add through the simple consistent application of an indentation
+style. To quote my own book of 17 years ago, such style distinguishes excellence from
+mere competence. The Japanese worldview understands the crucial value of the everyday
+worker and, more so, of the systems of development that owe to the simple, everyday
+actions of those workers. Quality is the result of a million selﬂess acts of care—not just of
+any great method that descends from the heavens. That these acts are simple doesn’t mean
+that they are simplistic, and it hardly means that they are easy. They are nonetheless the
+fabric of greatness and, more so, of beauty, in any human endeavor. To ignore them is not
+yet to be fully human.
+Of course, I am still an advocate of thinking at broader scope, and particularly of the
+value of architectural approaches rooted in deep domain knowledge and software usability.
+The book isn’t about that—or, at least, it isn’t obviously about that. This book has a subtler
+message whose profoundness should not be underappreciated. It ﬁts with the current saw
+of the really code-based people like Peter Sommerlad, Kevlin Henney and Giovanni
+Asproni. “The code is the design” and “Simple code” are their mantras. While we must
+take care to remember that the interface is the program, and that its structures have much
+to say about our program structure, it is crucial to continuously adopt the humble stance
+that the design lives in the code. And while rework in the manufacturing metaphor leads to
+cost, rework in design leads to value. We should view our code as the beautiful articulation
+of noble efforts of design—design as a process, not a static endpoint. It’s in the code that
+the architectural metrics of coupling and cohesion play out. If you listen to Larry Constantine describe coupling and cohesion, he speaks in terms of code—not lofty abstract concepts that one might ﬁnd in UML. Richard Gabriel advises us in his essay, “Abstraction
+Descant” that abstraction is evil. Code is anti-evil, and clean code is perhaps divine.
+Going back to my little box of Ga-Jol, I think it’s important to note that the Danish
+wisdom advises us not just to pay attention to small things, but also to be honest in small
+things. This means being honest to the code, honest to our colleagues about the state of our
+code and, most of all, being honest with ourselves about our code. Did we Do our Best to
+“leave the campground cleaner than we found it”? Did we re-factor our code before checking in? These are not peripheral concerns but concerns that lie squarely in the center of
+Agile values. It is a recommended practice in Scrum that re-factoring be part of the concept of “Done.” Neither architecture nor clean code insist on perfection, only on honesty
+and doing the best we can. To err is human; to forgive, divine. In Scrum, we make everything visible. We air our dirty laundry. We are honest about the state of our code because
+
+Foreword
+
+xxiii
+
+code is never perfect. We become more fully human, more worthy of the divine, and closer
+to that greatness in the details.
+In our profession, we desperately need all the help we can get. If a clean shop ﬂoor
+reduces accidents, and well-organized shop tools increase productivity, then I’m all for
+them. As for this book, it is the best pragmatic application of Lean principles to software I
+have ever seen in print. I expected no less from this practical little group of thinking individuals that has been striving together for years not only to become better, but also to gift
+their knowledge to the industry in works such as you now ﬁnd in your hands. It leaves the
+world a little better than I found it before Uncle Bob sent me the manuscript.
+Having completed this exercise in lofty insights, I am off to clean my desk.
+James O. Coplien
+Mørdrup, Denmark
+
+This page intentionally left blank
+
+(c) 2008 Focus Shift
+
+Introduction
+
+Reproduced with the kind permission of Thom Holwerda.
+http://www.osnews.com/story/19266/WTFs_m
+
+Which door represents your code? Which door represents your team or your company?
+Why are we in that room? Is this just a normal code review or have we found a stream of
+horrible problems shortly after going live? Are we debugging in a panic, poring over code
+that we thought worked? Are customers leaving in droves and managers breathing down
+
+xxv
+
+xxvi
+
+Introduction
+
+our necks? How can we make sure we wind up behind the right door when the going gets
+tough? The answer is: craftsmanship.
+There are two parts to learning craftsmanship: knowledge and work. You must gain
+the knowledge of principles, patterns, practices, and heuristics that a craftsman knows, and
+you must also grind that knowledge into your ﬁngers, eyes, and gut by working hard and
+practicing.
+I can teach you the physics of riding a bicycle. Indeed, the classical mathematics is
+relatively straightforward. Gravity, friction, angular momentum, center of mass, and so
+forth, can be demonstrated with less than a page full of equations. Given those formulae I
+could prove to you that bicycle riding is practical and give you all the knowledge you
+needed to make it work. And you’d still fall down the ﬁrst time you climbed on that bike.
+Coding is no different. We could write down all the “feel good” principles of clean
+code and then trust you to do the work (in other words, let you fall down when you get on
+the bike), but then what kind of teachers would that make us, and what kind of student
+would that make you?
+No. That’s not the way this book is going to work.
+Learning to write clean code is hard work. It requires more than just the knowledge of
+principles and patterns. You must sweat over it. You must practice it yourself, and watch
+yourself fail. You must watch others practice it and fail. You must see them stumble and
+retrace their steps. You must see them agonize over decisions and see the price they pay for
+making those decisions the wrong way.
+Be prepared to work hard while reading this book. This is not a “feel good” book that
+you can read on an airplane and ﬁnish before you land. This book will make you work, and
+work hard. What kind of work will you be doing? You’ll be reading code—lots of code.
+And you will be challenged to think about what’s right about that code and what’s wrong
+with it. You’ll be asked to follow along as we take modules apart and put them back
+together again. This will take time and effort; but we think it will be worth it.
+We have divided this book into three parts. The ﬁrst several chapters describe the principles, patterns, and practices of writing clean code. There is quite a bit of code in these
+chapters, and they will be challenging to read. They’ll prepare you for the second section
+to come. If you put the book down after reading the ﬁrst section, good luck to you!
+The second part of the book is the harder work. It consists of several case studies of
+ever-increasing complexity. Each case study is an exercise in cleaning up some code—of
+transforming code that has some problems into code that has fewer problems. The detail in
+this section is intense. You will have to ﬂip back and forth between the narrative and the
+code listings. You will have to analyze and understand the code we are working with and
+walk through our reasoning for making each change we make. Set aside some time
+because this should take you days.
+The third part of this book is the payoff. It is a single chapter containing a list of heuristics and smells gathered while creating the case studies. As we walked through and
+cleaned up the code in the case studies, we documented every reason for our actions as a
+
+Introduction
+
+xxvii
+
+heuristic or smell. We tried to understand our own reactions to the code we were reading
+and changing, and worked hard to capture why we felt what we felt and did what we did.
+The result is a knowledge base that desribes the way we think when we write, read, and
+clean code.
+This knowledge base is of limited value if you don’t do the work of carefully reading
+through the case studies in the second part of this book. In those case studies we have carefully annotated each change we made with forward references to the heuristics. These forward references appear in square brackets like this: [H22]. This lets you see the context in
+which those heuristics were applied and written! It is not the heuristics themselves that are
+so valuable, it is the relationship between those heuristics and the discrete decisions we
+made while cleaning up the code in the case studies.
+To further help you with those relationships, we have placed a cross-reference at the end
+of the book that shows the page number for every forward reference. You can use it to look
+up each place where a certain heuristic was applied.
+If you read the ﬁrst and third sections and skip over the case studies, then you will
+have read yet another “feel good” book about writing good software. But if you take the
+time to work through the case studies, following every tiny step, every minute decision—if
+you put yourself in our place, and force yourself to think along the same paths that we
+thought, then you will gain a much richer understanding of those principles, patterns, practices, and heuristics. They won’t be “feel good” knowledge any more. They’ll have been
+ground into your gut, ﬁngers, and heart. They’ll have become part of you in the same way
+that a bicycle becomes an extension of your will when you have mastered how to ride it.
+
+Acknowledgments
+Artwork
+Thank you to my two artists, Jeniffer Kohnke and Angela Brooks. Jennifer is responsible
+for the stunning and creative pictures at the start of each chapter and also for the portraits
+of Kent Beck, Ward Cunningham, Bjarne Stroustrup, Ron Jeffries, Grady Booch, Dave
+Thomas, Michael Feathers, and myself.
+Angela is responsible for the clever pictures that adorn the innards of each chapter.
+She has done quite a few pictures for me over the years, including many of the inside pictures in Agile Software Develpment: Principles, Patterns, and Practices. She is also my
+ﬁrstborn in whom I am well pleased.
+
+This page intentionally left blank
+
+On the Cover
+The image on the cover is M104: The Sombrero Galaxy. M104 is located in Virgo and is
+just under 30 million light-years from us. At it’s core is a supermassive black hole weighing in at about a billion solar masses.
+Does the image remind you of the explosion of the Klingon power moon Praxis? I
+vividly remember the scene in Star Trek VI that showed an equatorial ring of debris ﬂying
+away from that explosion. Since that scene, the equatorial ring has been a common artifact
+in sci-ﬁ movie explosions. It was even added to the explosion of Alderaan in later editions
+of the ﬁrst Star Wars movie.
+What caused this ring to form around M104? Why does it have such a huge central
+bulge and such a bright and tiny nucleus? It looks to me as though the central black hole
+lost its cool and blew a 30,000 light-year hole in the middle of the galaxy. Woe befell any
+civilizations that might have been in the path of that cosmic disruption.
+Supermassive black holes swallow whole stars for lunch, converting a sizeable fraction of their mass to energy. E = MC2 is leverage enough, but when M is a stellar mass:
+Look out! How many stars fell headlong into that maw before the monster was satiated?
+Could the size of the central void be a hint?
+The image of M104 on the cover is a
+combination of the famous visible light photograph from Hubble (right), and the recent
+infrared image from the Spitzer orbiting
+observatory (below, right). It’s the infrared
+image that clearly shows us the ring nature
+of the galaxy. In visible light we only see the
+front edge of the ring in silhouette. The central bulge obscures the rest of the ring.
+But in the infrared, the hot particles in
+the ring shine through the central bulge. The
+two images combined give us a view we’ve
+not seen before and imply that long ago it
+was a raging inferno of activity.
+
+Cover image: © Spitzer Space Telescope
+
+xxix
+
+This page intentionally left blank
+
+1
+Clean Code
+
+You are reading this book for two reasons. First, you are a programmer. Second, you want
+to be a better programmer. Good. We need better programmers.
+
+1
+
+2
+
+Chapter 1: Clean Code
+
+This is a book about good programming. It is ﬁlled with code. We are going to look at
+code from every different direction. We’ll look down at it from the top, up at it from the
+bottom, and through it from the inside out. By the time we are done, we’re going to know a
+lot about code. What’s more, we’ll be able to tell the difference between good code and bad
+code. We’ll know how to write good code. And we’ll know how to transform bad code into
+good code.
+
+There Will Be Code
+One might argue that a book about code is somehow behind the times—that code is no
+longer the issue; that we should be concerned about models and requirements instead.
+Indeed some have suggested that we are close to the end of code. That soon all code will
+be generated instead of written. That programmers simply won’t be needed because business people will generate programs from speciﬁcations.
+Nonsense! We will never be rid of code, because code represents the details of the
+requirements. At some level those details cannot be ignored or abstracted; they have to be
+speciﬁed. And specifying requirements in such detail that a machine can execute them is
+programming. Such a speciﬁcation is code.
+I expect that the level of abstraction of our languages will continue to increase. I
+also expect that the number of domain-speciﬁc languages will continue to grow. This
+will be a good thing. But it will not eliminate code. Indeed, all the speciﬁcations written
+in these higher level and domain-speciﬁc language will be code! It will still need to
+be rigorous, accurate, and so formal and detailed that a machine can understand and
+execute it.
+The folks who think that code will one day disappear are like mathematicians who
+hope one day to discover a mathematics that does not have to be formal. They are hoping
+that one day we will discover a way to create machines that can do what we want rather
+than what we say. These machines will have to be able to understand us so well that they
+can translate vaguely speciﬁed needs into perfectly executing programs that precisely meet
+those needs.
+This will never happen. Not even humans, with all their intuition and creativity,
+have been able to create successful systems from the vague feelings of their customers.
+Indeed, if the discipline of requirements speciﬁcation has taught us anything, it is that
+well-speciﬁed requirements are as formal as code and can act as executable tests of that
+code!
+Remember that code is really the language in which we ultimately express the requirements. We may create languages that are closer to the requirements. We may create tools
+that help us parse and assemble those requirements into formal structures. But we will
+never eliminate necessary precision—so there will always be code.
+
+Bad Code
+
+3
+
+Bad Code
+I was recently reading the preface to Kent Beck’s
+book Implementation Patterns.1 He says, “. . . this
+book is based on a rather fragile premise: that
+good code matters. . . .” A fragile premise? I disagree! I think that premise is one of the most
+robust, supported, and overloaded of all the premises in our craft (and I think Kent knows it). We
+know good code matters because we’ve had to
+deal for so long with its lack.
+I know of one company that, in the late 80s,
+wrote a killer app. It was very popular, and lots of
+professionals bought and used it. But then the
+release cycles began to stretch. Bugs were not
+repaired from one release to the next. Load times
+grew and crashes increased. I remember the day I
+shut the product down in frustration and never
+used it again. The company went out of business
+a short time after that.
+Two decades later I met one of the early employees of that company and asked him
+what had happened. The answer conﬁrmed my fears. They had rushed the product to
+market and had made a huge mess in the code. As they added more and more features, the
+code got worse and worse until they simply could not manage it any longer. It was the bad
+code that brought the company down.
+Have you ever been signiﬁcantly impeded by bad code? If you are a programmer of
+any experience then you’ve felt this impediment many times. Indeed, we have a name for
+it. We call it wading. We wade through bad code. We slog through a morass of tangled
+brambles and hidden pitfalls. We struggle to ﬁnd our way, hoping for some hint, some
+clue, of what is going on; but all we see is more and more senseless code.
+Of course you have been impeded by bad code. So then—why did you write it?
+Were you trying to go fast? Were you in a rush? Probably so. Perhaps you felt that you
+didn’t have time to do a good job; that your boss would be angry with you if you took the
+time to clean up your code. Perhaps you were just tired of working on this program and
+wanted it to be over. Or maybe you looked at the backlog of other stuff that you had promised to get done and realized that you needed to slam this module together so you could
+move on to the next. We’ve all done it.
+We’ve all looked at the mess we’ve just made and then have chosen to leave it for
+another day. We’ve all felt the relief of seeing our messy program work and deciding that a
+
+1. [Beck07].
+
+4
+
+Chapter 1: Clean Code
+
+working mess is better than nothing. We’ve all said we’d go back and clean it up later. Of
+course, in those days we didn’t know LeBlanc’s law: Later equals never.
+
+The Total Cost of Owning a Mess
+If you have been a programmer for more than two or three years, you have probably been
+signiﬁcantly slowed down by someone else’s messy code. If you have been a programmer
+for longer than two or three years, you have probably been slowed down by messy code.
+The degree of the slowdown can be signiﬁcant. Over the span of a year or two, teams that
+were moving very fast at the beginning of a project can ﬁnd themselves moving at a snail’s
+pace. Every change they make to the code breaks two or three other parts of the code. No
+change is trivial. Every addition or modiﬁcation to the system requires that the tangles,
+twists, and knots be “understood” so that more tangles, twists, and knots can be added.
+Over time the mess becomes so big and so deep and so tall, they can not clean it up. There
+is no way at all.
+As the mess builds, the productivity of the team continues to decrease, asymptotically
+approaching zero. As productivity decreases, management does the only thing they can;
+they add more staff to the project in hopes of increasing productivity. But that new staff is
+not versed in the design of the system. They don’t know the difference between a change
+that matches the design intent and a change that thwarts the design intent. Furthermore,
+they, and everyone else on the team, are under horriﬁc pressure to increase productivity. So
+they all make more and more messes, driving the productivity ever further toward zero.
+(See Figure 1-1.)
+
+Figure 1-1
+Productivity vs. time
+
+The Total Cost of Owning a Mess
+
+5
+
+The Grand Redesign in the Sky
+Eventually the team rebels. They inform management that they cannot continue to develop
+in this odious code base. They demand a redesign. Management does not want to expend
+the resources on a whole new redesign of the project, but they cannot deny that productivity is terrible. Eventually they bend to the demands of the developers and authorize the
+grand redesign in the sky.
+A new tiger team is selected. Everyone wants to be on this team because it’s a greenﬁeld project. They get to start over and create something truly beautiful. But only the best
+and brightest are chosen for the tiger team. Everyone else must continue to maintain the
+current system.
+Now the two teams are in a race. The tiger team must build a new system that does
+everything that the old system does. Not only that, they have to keep up with the changes
+that are continuously being made to the old system. Management will not replace the old
+system until the new system can do everything that the old system does.
+This race can go on for a very long time. I’ve seen it take 10 years. And by the time it’s
+done, the original members of the tiger team are long gone, and the current members are
+demanding that the new system be redesigned because it’s such a mess.
+If you have experienced even one small part of the story I just told, then you already
+know that spending time keeping your code clean is not just cost effective; it’s a matter of
+professional survival.
+
+Attitude
+Have you ever waded through a mess so grave that it took weeks to do what should have
+taken hours? Have you seen what should have been a one-line change, made instead in
+hundreds of different modules? These symptoms are all too common.
+Why does this happen to code? Why does good code rot so quickly into bad code? We
+have lots of explanations for it. We complain that the requirements changed in ways that
+thwart the original design. We bemoan the schedules that were too tight to do things right.
+We blather about stupid managers and intolerant customers and useless marketing types
+and telephone sanitizers. But the fault, dear Dilbert, is not in our stars, but in ourselves.
+We are unprofessional.
+This may be a bitter pill to swallow. How could this mess be our fault? What about the
+requirements? What about the schedule? What about the stupid managers and the useless
+marketing types? Don’t they bear some of the blame?
+No. The managers and marketers look to us for the information they need to make
+promises and commitments; and even when they don’t look to us, we should not be shy
+about telling them what we think. The users look to us to validate the way the requirements
+will ﬁt into the system. The project managers look to us to help work out the schedule. We
+
+6
+
+Chapter 1: Clean Code
+
+are deeply complicit in the planning of the project and share a great deal of the responsibility for any failures; especially if those failures have to do with bad code!
+“But wait!” you say. “If I don’t do what my manager says, I’ll be ﬁred.” Probably not.
+Most managers want the truth, even when they don’t act like it. Most managers want good
+code, even when they are obsessing about the schedule. They may defend the schedule and
+requirements with passion; but that’s their job. It’s your job to defend the code with equal
+passion.
+To drive this point home, what if you were a doctor and had a patient who demanded
+that you stop all the silly hand-washing in preparation for surgery because it was taking
+too much time?2 Clearly the patient is the boss; and yet the doctor should absolutely refuse
+to comply. Why? Because the doctor knows more than the patient about the risks of disease and infection. It would be unprofessional (never mind criminal) for the doctor to
+comply with the patient.
+So too it is unprofessional for programmers to bend to the will of managers who don’t
+understand the risks of making messes.
+
+The Primal Conundrum
+Programmers face a conundrum of basic values. All developers with more than a few years
+experience know that previous messes slow them down. And yet all developers feel
+the pressure to make messes in order to meet deadlines. In short, they don’t take the time
+to go fast!
+True professionals know that the second part of the conundrum is wrong. You will not
+make the deadline by making the mess. Indeed, the mess will slow you down instantly, and
+will force you to miss the deadline. The only way to make the deadline—the only way to
+go fast—is to keep the code as clean as possible at all times.
+
+The Art of Clean Code?
+Let’s say you believe that messy code is a signiﬁcant impediment. Let’s say that you accept
+that the only way to go fast is to keep your code clean. Then you must ask yourself: “How
+do I write clean code?” It’s no good trying to write clean code if you don’t know what it
+means for code to be clean!
+The bad news is that writing clean code is a lot like painting a picture. Most of us
+know when a picture is painted well or badly. But being able to recognize good art from
+bad does not mean that we know how to paint. So too being able to recognize clean code
+from dirty code does not mean that we know how to write clean code!
+
+2. When hand-washing was ﬁrst recommended to physicians by Ignaz Semmelweis in 1847, it was rejected on the basis that
+doctors were too busy and wouldn’t have time to wash their hands between patient visits.
+
+The Total Cost of Owning a Mess
+
+7
+
+Writing clean code requires the disciplined use of a myriad little techniques applied
+through a painstakingly acquired sense of “cleanliness.” This “code-sense” is the key.
+Some of us are born with it. Some of us have to ﬁght to acquire it. Not only does it let us
+see whether code is good or bad, but it also shows us the strategy for applying our discipline to transform bad code into clean code.
+A programmer without “code-sense” can look at a messy module and recognize the
+mess but will have no idea what to do about it. A programmer with “code-sense” will look
+at a messy module and see options and variations. The “code-sense” will help that programmer choose the best variation and guide him or her to plot a sequence of behavior
+preserving transformations to get from here to there.
+In short, a programmer who writes clean code is an artist who can take a blank screen
+through a series of transformations until it is an elegantly coded system.
+
+What Is Clean Code?
+There are probably as many deﬁnitions as there are programmers. So I asked some very
+well-known and deeply experienced programmers what they thought.
+Bjarne Stroustrup, inventor of C++
+and author of The C++ Programming
+Language
+I like my code to be elegant and efﬁcient. The
+logic should be straightforward to make it hard
+for bugs to hide, the dependencies minimal to
+ease maintenance, error handling complete
+according to an articulated strategy, and performance close to optimal so as not to tempt
+people to make the code messy with unprincipled optimizations. Clean code does one thing
+well.
+
+Bjarne uses the word “elegant.” That’s
+quite a word! The dictionary in my MacBook®
+provides the following deﬁnitions: pleasingly
+graceful and stylish in appearance or manner; pleasingly ingenious and simple. Notice the
+emphasis on the word “pleasing.” Apparently Bjarne thinks that clean code is pleasing to
+read. Reading it should make you smile the way a well-crafted music box or well-designed
+car would.
+Bjarne also mentions efﬁciency—twice. Perhaps this should not surprise us coming
+from the inventor of C++; but I think there’s more to it than the sheer desire for speed.
+Wasted cycles are inelegant, they are not pleasing. And now note the word that Bjarne uses
+
+8
+
+Chapter 1: Clean Code
+
+to describe the consequence of that inelegance. He uses the word “tempt.” There is a deep
+truth here. Bad code tempts the mess to grow! When others change bad code, they tend to
+make it worse.
+Pragmatic Dave Thomas and Andy Hunt said this a different way. They used the metaphor of broken windows.3 A building with broken windows looks like nobody cares about
+it. So other people stop caring. They allow more windows to become broken. Eventually
+they actively break them. They despoil the facade with grafﬁti and allow garbage to collect. One broken window starts the process toward decay.
+Bjarne also mentions that error handing should be complete. This goes to the discipline of paying attention to details. Abbreviated error handling is just one way that programmers gloss over details. Memory leaks are another, race conditions still another.
+Inconsistent naming yet another. The upshot is that clean code exhibits close attention to
+detail.
+Bjarne closes with the assertion that clean code does one thing well. It is no accident
+that there are so many principles of software design that can be boiled down to this simple
+admonition. Writer after writer has tried to communicate this thought. Bad code tries to do
+too much, it has muddled intent and ambiguity of purpose. Clean code is focused. Each
+function, each class, each module exposes a single-minded attitude that remains entirely
+undistracted, and unpolluted, by the surrounding details.
+Grady Booch, author of Object
+Oriented Analysis and Design with
+Applications
+Clean code is simple and direct. Clean code
+reads like well-written prose. Clean code never
+obscures the designer’s intent but rather is full
+of crisp abstractions and straightforward lines
+of control.
+
+Grady makes some of the same points as
+Bjarne, but he takes a readability perspective. I
+especially like his view that clean code should
+read like well-written prose. Think back on a
+really good book that you’ve read. Remember how the words disappeared to be replaced
+by images! It was like watching a movie, wasn’t it? Better! You saw the characters, you
+heard the sounds, you experienced the pathos and the humor.
+Reading clean code will never be quite like reading Lord of the Rings. Still, the literary metaphor is not a bad one. Like a good novel, clean code should clearly expose the tensions in the problem to be solved. It should build those tensions to a climax and then give
+
+3. http://www.pragmaticprogrammer.com/booksellers/2004-12.html
+
+The Total Cost of Owning a Mess
+
+9
+
+the reader that “Aha! Of course!” as the issues and tensions are resolved in the revelation
+of an obvious solution.
+I ﬁnd Grady’s use of the phrase “crisp abstraction” to be a fascinating oxymoron!
+After all the word “crisp” is nearly a synonym for “concrete.” My MacBook’s dictionary
+holds the following deﬁnition of “crisp”: briskly decisive and matter-of-fact, without hesitation or unnecessary detail. Despite this seeming juxtaposition of meaning, the words
+carry a powerful message. Our code should be matter-of-fact as opposed to speculative.
+It should contain only what is necessary. Our readers should perceive us to have been
+decisive.
+“Big” Dave Thomas, founder
+of OTI, godfather of the
+Eclipse strategy
+Clean code can be read, and enhanced by a
+developer other than its original author. It has
+unit and acceptance tests. It has meaningful
+names. It provides one way rather than many
+ways for doing one thing. It has minimal dependencies, which are explicitly deﬁned, and provides a clear and minimal API. Code should be
+literate since depending on the language, not all
+necessary information can be expressed clearly
+in code alone.
+
+Big Dave shares Grady’s desire for readability, but with an important twist. Dave asserts that
+clean code makes it easy for other people to enhance it. This may seem obvious, but it cannot be overemphasized. There is, after all, a difference between code that is easy to read
+and code that is easy to change.
+Dave ties cleanliness to tests! Ten years ago this would have raised a lot of eyebrows.
+But the discipline of Test Driven Development has made a profound impact upon our
+industry and has become one of our most fundamental disciplines. Dave is right. Code,
+without tests, is not clean. No matter how elegant it is, no matter how readable and accessible, if it hath not tests, it be unclean.
+Dave uses the word minimal twice. Apparently he values code that is small, rather
+than code that is large. Indeed, this has been a common refrain throughout software literature since its inception. Smaller is better.
+Dave also says that code should be literate. This is a soft reference to Knuth’s literate
+programming.4 The upshot is that the code should be composed in such a form as to make
+it readable by humans.
+
+4. [Knuth92].
+
+10
+
+Chapter 1: Clean Code
+
+Michael Feathers, author of Working
+Effectively with Legacy Code
+I could list all of the qualities that I notice in
+clean code, but there is one overarching quality
+that leads to all of them. Clean code always
+looks like it was written by someone who cares.
+There is nothing obvious that you can do to
+make it better. All of those things were thought
+about by the code’s author, and if you try to
+imagine improvements, you’re led back to
+where you are, sitting in appreciation of the
+code someone left for you—code left by someone who cares deeply about the craft.
+
+One word: care. That’s really the topic of
+this book. Perhaps an appropriate subtitle
+would be How to Care for Code.
+Michael hit it on the head. Clean code is
+code that has been taken care of. Someone has taken the time to keep it simple and orderly.
+They have paid appropriate attention to details. They have cared.
+Ron Jeffries, author of Extreme Programming
+Installed and Extreme Programming
+Adventures in C#
+Ron began his career programming in Fortran at
+the Strategic Air Command and has written code in
+almost every language and on almost every
+machine. It pays to consider his words carefully.
+In recent years I begin, and nearly end, with Beck’s
+rules of simple code. In priority order, simple code:
+• Runs all the tests;
+• Contains no duplication;
+• Expresses all the design ideas that are in the
+system;
+• Minimizes the number of entities such as classes,
+methods, functions, and the like.
+Of these, I focus mostly on duplication. When the same thing is done over and over,
+it’s a sign that there is an idea in our mind that is not well represented in the code. I try to
+ﬁgure out what it is. Then I try to express that idea more clearly.
+Expressiveness to me includes meaningful names, and I am likely to change the
+names of things several times before I settle in. With modern coding tools such as Eclipse,
+renaming is quite inexpensive, so it doesn’t trouble me to change. Expressiveness goes
+
+The Total Cost of Owning a Mess
+
+11
+
+beyond names, however. I also look at whether an object or method is doing more than one
+thing. If it’s an object, it probably needs to be broken into two or more objects. If it’s a
+method, I will always use the Extract Method refactoring on it, resulting in one method
+that says more clearly what it does, and some submethods saying how it is done.
+Duplication and expressiveness take me a very long way into what I consider clean
+code, and improving dirty code with just these two things in mind can make a huge difference. There is, however, one other thing that I’m aware of doing, which is a bit harder to
+explain.
+After years of doing this work, it seems to me that all programs are made up of very
+similar elements. One example is “ﬁnd things in a collection.” Whether we have a database of employee records, or a hash map of keys and values, or an array of items of some
+kind, we often ﬁnd ourselves wanting a particular item from that collection. When I ﬁnd
+that happening, I will often wrap the particular implementation in a more abstract method
+or class. That gives me a couple of interesting advantages.
+I can implement the functionality now with something simple, say a hash map, but
+since now all the references to that search are covered by my little abstraction, I can
+change the implementation any time I want. I can go forward quickly while preserving my
+ability to change later.
+In addition, the collection abstraction often calls my attention to what’s “really”
+going on, and keeps me from running down the path of implementing arbitrary collection
+behavior when all I really need is a few fairly simple ways of ﬁnding what I want.
+Reduced duplication, high expressiveness, and early building of simple abstractions.
+That’s what makes clean code for me.
+
+Here, in a few short paragraphs, Ron has summarized the contents of this book. No
+duplication, one thing, expressiveness, tiny abstractions. Everything is there.
+Ward Cunningham, inventor of Wiki,
+inventor of Fit, coinventor of eXtreme
+Programming. Motive force behind
+Design Patterns. Smalltalk and OO
+thought leader. The godfather of all
+those who care about code.
+You know you are working on clean code when each
+routine you read turns out to be pretty much what
+you expected. You can call it beautiful code when
+the code also makes it look like the language was
+made for the problem.
+
+Statements like this are characteristic of Ward.
+You read it, nod your head, and then go on to the
+next topic. It sounds so reasonable, so obvious, that it barely registers as something
+profound. You might think it was pretty much what you expected. But let’s take a closer
+look.
+
+12
+
+Chapter 1: Clean Code
+
+“. . . pretty much what you expected.” When was the last time you saw a module that
+was pretty much what you expected? Isn’t it more likely that the modules you look at will
+be puzzling, complicated, tangled? Isn’t misdirection the rule? Aren’t you used to ﬂailing
+about trying to grab and hold the threads of reasoning that spew forth from the whole system and weave their way through the module you are reading? When was the last time you
+read through some code and nodded your head the way you might have nodded your head
+at Ward’s statement?
+Ward expects that when you read clean code you won’t be surprised at all. Indeed, you
+won’t even expend much effort. You will read it, and it will be pretty much what you
+expected. It will be obvious, simple, and compelling. Each module will set the stage for
+the next. Each tells you how the next will be written. Programs that are that clean are so
+profoundly well written that you don’t even notice it. The designer makes it look ridiculously simple like all exceptional designs.
+And what about Ward’s notion of beauty? We’ve all railed against the fact that our languages weren’t designed for our problems. But Ward’s statement puts the onus back on us.
+He says that beautiful code makes the language look like it was made for the problem! So
+it’s our responsibility to make the language look simple! Language bigots everywhere,
+beware! It is not the language that makes programs appear simple. It is the programmer
+that make the language appear simple!
+
+Schools of Thought
+What about me (Uncle Bob)? What do I think
+clean code is? This book will tell you, in hideous
+detail, what I and my compatriots think about
+clean code. We will tell you what we think makes
+a clean variable name, a clean function, a clean
+class, etc. We will present these opinions as absolutes, and we will not apologize for our stridence.
+To us, at this point in our careers, they are absolutes. They are our school of thought about clean
+code.
+Martial artists do not all agree about the best
+martial art, or the best technique within a martial
+art. Often master martial artists will form their
+own schools of thought and gather students to
+learn from them. So we see Gracie Jiu Jistu,
+founded and taught by the Gracie family in Brazil. We see Hakkoryu Jiu Jistu, founded
+and taught by Okuyama Ryuho in Tokyo. We see Jeet Kune Do, founded and taught by
+Bruce Lee in the United States.
+
+We Are Authors
+
+13
+
+Students of these approaches immerse themselves in the teachings of the founder.
+They dedicate themselves to learn what that particular master teaches, often to the exclusion of any other master’s teaching. Later, as the students grow in their art, they may
+become the student of a different master so they can broaden their knowledge and practice.
+Some eventually go on to reﬁne their skills, discovering new techniques and founding their
+own schools.
+None of these different schools is absolutely right. Yet within a particular school we
+act as though the teachings and techniques are right. After all, there is a right way to practice Hakkoryu Jiu Jitsu, or Jeet Kune Do. But this rightness within a school does not invalidate the teachings of a different school.
+Consider this book a description of the Object Mentor School of Clean Code. The
+techniques and teachings within are the way that we practice our art. We are willing to
+claim that if you follow these teachings, you will enjoy the beneﬁts that we have enjoyed,
+and you will learn to write code that is clean and professional. But don’t make the mistake
+of thinking that we are somehow “right” in any absolute sense. There are other schools and
+other masters that have just as much claim to professionalism as we. It would behoove you
+to learn from them as well.
+Indeed, many of the recommendations in this book are controversial. You will probably not agree with all of them. You might violently disagree with some of them. That’s ﬁne.
+We can’t claim ﬁnal authority. On the other hand, the recommendations in this book are
+things that we have thought long and hard about. We have learned them through decades of
+experience and repeated trial and error. So whether you agree or disagree, it would be a
+shame if you did not see, and respect, our point of view.
+
+We Are Authors
+The @author ﬁeld of a Javadoc tells us who we are. We are authors. And one thing about
+authors is that they have readers. Indeed, authors are responsible for communicating well
+with their readers. The next time you write a line of code, remember you are an author,
+writing for readers who will judge your effort.
+You might ask: How much is code really read? Doesn’t most of the effort go into
+writing it?
+Have you ever played back an edit session? In the 80s and 90s we had editors like Emacs
+that kept track of every keystroke. You could work for an hour and then play back your whole
+edit session like a high-speed movie. When I did this, the results were fascinating.
+The vast majority of the playback was scrolling and navigating to other modules!
+Bob enters the module.
+He scrolls down to the function needing change.
+He pauses, considering his options.
+Oh, he’s scrolling up to the top of the module to check the initialization of a variable.
+Now he scrolls back down and begins to type.
+
+14
+
+Chapter 1: Clean Code
+
+Ooops, he’s erasing what he typed!
+He types it again.
+He erases it again!
+He types half of something else but then erases that!
+He scrolls down to another function that calls the function he’s changing to see how it is
+called.
+He scrolls back up and types the same code he just erased.
+He pauses.
+He erases that code again!
+He pops up another window and looks at a subclass. Is that function overridden?
+
+...
+You get the drift. Indeed, the ratio of time spent reading vs. writing is well over 10:1.
+We are constantly reading old code as part of the effort to write new code.
+Because this ratio is so high, we want the reading of code to be easy, even if it makes
+the writing harder. Of course there’s no way to write code without reading it, so making it
+easy to read actually makes it easier to write.
+There is no escape from this logic. You cannot write code if you cannot read the surrounding code. The code you are trying to write today will be hard or easy to write
+depending on how hard or easy the surrounding code is to read. So if you want to go fast,
+if you want to get done quickly, if you want your code to be easy to write, make it easy to
+read.
+
+The Boy Scout Rule
+It’s not enough to write the code well. The code has to be kept clean over time. We’ve all
+seen code rot and degrade as time passes. So we must take an active role in preventing this
+degradation.
+The Boy Scouts of America have a simple rule that we can apply to our profession.
+Leave the campground cleaner than you found it.5
+
+If we all checked-in our code a little cleaner than when we checked it out, the code
+simply could not rot. The cleanup doesn’t have to be something big. Change one variable
+name for the better, break up one function that’s a little too large, eliminate one small bit of
+duplication, clean up one composite if statement.
+Can you imagine working on a project where the code simply got better as time
+passed? Do you believe that any other option is professional? Indeed, isn’t continuous
+improvement an intrinsic part of professionalism?
+
+5. This was adapted from Robert Stephenson Smyth Baden-Powell’s farewell message to the Scouts: “Try and leave this world a
+little better than you found it . . .”
+
+Bibliography
+
+15
+
+Prequel and Principles
+In many ways this book is a “prequel” to a book I wrote in 2002 entitled Agile Software
+Development: Principles, Patterns, and Practices (PPP). The PPP book concerns itself
+with the principles of object-oriented design, and many of the practices used by professional developers. If you have not read PPP, then you may ﬁnd that it continues the story
+told by this book. If you have already read it, then you’ll ﬁnd many of the sentiments of
+that book echoed in this one at the level of code.
+In this book you will ﬁnd sporadic references to various principles of design. These
+include the Single Responsibility Principle (SRP), the Open Closed Principle (OCP), and
+the Dependency Inversion Principle (DIP) among others. These principles are described in
+depth in PPP.
+
+Conclusion
+Books on art don’t promise to make you an artist. All they can do is give you some of the
+tools, techniques, and thought processes that other artists have used. So too this book cannot promise to make you a good programmer. It cannot promise to give you “code-sense.”
+All it can do is show you the thought processes of good programmers and the tricks, techniques, and tools that they use.
+Just like a book on art, this book will be full of details. There will be lots of code.
+You’ll see good code and you’ll see bad code. You’ll see bad code transformed into good
+code. You’ll see lists of heuristics, disciplines, and techniques. You’ll see example after
+example. After that, it’s up to you.
+Remember the old joke about the concert violinist who got lost on his way to a performance? He stopped an old man on the corner and asked him how to get to Carnegie Hall.
+The old man looked at the violinist and the violin tucked under his arm, and said: “Practice, son. Practice!”
+
+Bibliography
+[Beck07]: Implementation Patterns, Kent Beck, Addison-Wesley, 2007.
+[Knuth92]: Literate Programming, Donald E. Knuth, Center for the Study of Language
+and Information, Leland Stanford Junior University, 1992.
+
+This page intentionally left blank
+
+2
+Meaningful Names
+by Tim Ottinger
+
+Introduction
+Names are everywhere in software. We name our variables, our functions, our arguments,
+classes, and packages. We name our source ﬁles and the directories that contain them. We
+name our jar ﬁles and war ﬁles and ear ﬁles. We name and name and name. Because we do
+
+17
+
+18
+
+Chapter 2: Meaningful Names
+
+so much of it, we’d better do it well. What follows are some simple rules for creating
+good names.
+
+Use Intention-Revealing Names
+It is easy to say that names should reveal intent. What we want to impress upon you is that
+we are serious about this. Choosing good names takes time but saves more than it takes.
+So take care with your names and change them when you ﬁnd better ones. Everyone who
+reads your code (including you) will be happier if you do.
+The name of a variable, function, or class, should answer all the big questions. It
+should tell you why it exists, what it does, and how it is used. If a name requires a comment, then the name does not reveal its intent.
+int d; // elapsed time in days
+
+The name d reveals nothing. It does not evoke a sense of elapsed time, nor of days. We
+should choose a name that speciﬁes what is being measured and the unit of that measurement:
+int
+int
+int
+int
+
+elapsedTimeInDays;
+daysSinceCreation;
+daysSinceModification;
+fileAgeInDays;
+
+Choosing names that reveal intent can make it much easier to understand and change
+code. What is the purpose of this code?
+public List&lt;int[]&gt; getThem() {
+List&lt;int[]&gt; list1 = new ArrayList&lt;int[]&gt;();
+for (int[] x : theList)
+if (x[0] == 4)
+list1.add(x);
+return list1;
+}
+
+Why is it hard to tell what this code is doing? There are no complex expressions.
+Spacing and indentation are reasonable. There are only three variables and two constants
+mentioned. There aren’t even any fancy classes or polymorphic methods, just a list of
+arrays (or so it seems).
+The problem isn’t the simplicity of the code but the implicity of the code (to coin a
+phrase): the degree to which the context is not explicit in the code itself. The code implicitly requires that we know the answers to questions such as:
+1.
+
+What kinds of things are in theList?
+
+2.
+
+What is the signiﬁcance of the zeroth subscript of an item in theList?
+
+3.
+
+What is the signiﬁcance of the value 4?
+
+4.
+
+How would I use the list being returned?
+
+Avoid Disinformation
+
+19
+
+The answers to these questions are not present in the code sample, but they could have
+been. Say that we’re working in a mine sweeper game. We ﬁnd that the board is a list of
+cells called theList. Let’s rename that to gameBoard.
+Each cell on the board is represented by a simple array. We further ﬁnd that the zeroth
+subscript is the location of a status value and that a status value of 4 means “ﬂagged.” Just
+by giving these concepts names we can improve the code considerably:
+public List&lt;int[]&gt; getFlaggedCells() {
+List&lt;int[]&gt; flaggedCells = new ArrayList&lt;int[]&gt;();
+for (int[] cell : gameBoard)
+if (cell[STATUS_VALUE] == FLAGGED)
+flaggedCells.add(cell);
+return flaggedCells;
+}
+
+Notice that the simplicity of the code has not changed. It still has exactly the same number
+of operators and constants, with exactly the same number of nesting levels. But the code
+has become much more explicit.
+We can go further and write a simple class for cells instead of using an array of ints.
+It can include an intention-revealing function (call it isFlagged) to hide the magic numbers. It results in a new version of the function:
+public List&lt;Cell&gt; getFlaggedCells() {
+List&lt;Cell&gt; flaggedCells = new ArrayList&lt;Cell&gt;();
+for (Cell cell : gameBoard)
+if (cell.isFlagged())
+flaggedCells.add(cell);
+return flaggedCells;
+}
+
+With these simple name changes, it’s not difﬁcult to understand what’s going on. This is
+the power of choosing good names.
+
+Avoid Disinformation
+Programmers must avoid leaving false clues that obscure the meaning of code. We should
+avoid words whose entrenched meanings vary from our intended meaning. For example,
+hp, aix, and sco would be poor variable names because they are the names of Unix platforms or variants. Even if you are coding a hypotenuse and hp looks like a good abbreviation, it could be disinformative.
+Do not refer to a grouping of accounts as an accountList unless it’s actually a List.
+The word list means something speciﬁc to programmers. If the container holding the
+accounts is not actually a List, it may lead to false conclusions.1 So accountGroup or
+bunchOfAccounts or just plain accounts would be better.
+
+1. As we’ll see later on, even if the container is a List, it’s probably better not to encode the container type into the name.
+
+20
+
+Chapter 2: Meaningful Names
+
+Beware of using names which vary in small ways. How long does it take to spot the
+subtle difference between a XYZControllerForEfficientHandlingOfStrings in one module
+and, somewhere a little more distant, XYZControllerForEfficientStorageOfStrings? The
+words have frightfully similar shapes.
+Spelling similar concepts similarly is information. Using inconsistent spellings is disinformation. With modern Java environments we enjoy automatic code completion. We
+write a few characters of a name and press some hotkey combination (if that) and are
+rewarded with a list of possible completions for that name. It is very helpful if names for
+very similar things sort together alphabetically and if the differences are very obvious,
+because the developer is likely to pick an object by name without seeing your copious
+comments or even the list of methods supplied by that class.
+A truly awful example of disinformative names would be the use of lower-case L or
+uppercase O as variable names, especially in combination. The problem, of course, is that
+they look almost entirely like the constants one and zero, respectively.
+int a = l;
+if ( O == l )
+a = O1;
+else
+l = 01;
+
+The reader may think this a contrivance, but we have examined code where such
+things were abundant. In one case the author of the code suggested using a different font
+so that the differences were more obvious, a solution that would have to be passed down to
+all future developers as oral tradition or in a written document. The problem is conquered
+with ﬁnality and without creating new work products by a simple renaming.
+
+Make Meaningful
+Distinctions
+Programmers create problems for themselves when they write code solely to satisfy a compiler or interpreter. For example,
+because you can’t use the same name to refer
+to two different things in the same scope,
+you might be tempted to change one name
+in an arbitrary way. Sometimes this is done by misspelling one, leading to the surprising
+situation where correcting spelling errors leads to an inability to compile.2
+It is not sufﬁcient to add number series or noise words, even though the compiler is
+satisﬁed. If names must be different, then they should also mean something different.
+
+2. Consider, for example, the truly hideous practice of creating a variable named klass just because the name class was used
+for something else.
+
+Use Pronounceable Names
+
+21
+
+Number-series naming (a1, a2, .. aN) is the opposite of intentional naming. Such
+names are not disinformative—they are noninformative; they provide no clue to the
+author’s intention. Consider:
+public static void copyChars(char a1[], char a2[]) {
+for (int i = 0; i &lt; a1.length; i++) {
+a2[i] = a1[i];
+}
+}
+
+This function reads much better when source and destination are used for the argument
+names.
+Noise words are another meaningless distinction. Imagine that you have a Product
+class. If you have another called ProductInfo or ProductData, you have made the names different without making them mean anything different. Info and Data are indistinct noise
+words like a, an, and the.
+Note that there is nothing wrong with using preﬁx conventions like a and the so long
+as they make a meaningful distinction. For example you might use a for all local variables
+and the for all function arguments.3 The problem comes in when you decide to call a variable theZork because you already have another variable named zork.
+Noise words are redundant. The word variable should never appear in a variable
+name. The word table shou</pre></div> </div>
+</div>
+</div>
+</div></div></td>
+</tr>
+<tr style="height:60px">
+<td id="footer" valign="top">
+<div class="container-fluid">
+<!-- footer begin -->
+<div class="row">
+<div class="footer-copyright w-5-hide w-3-2-show-inline">
+<span class="w-5-hide w-1-2-show p-left-0">Since 2009.</span>
+<span class="w-3-show w-1-2-hide p-left-0">Free ebooks since 2009.</span>
+</div>
+<div class="footer-right w-5-hide w-4-2-show">
+<div class="footer-nav-right" role="navigation">
+<ul class="nav navbar-nav">
+<li class="icon-link">
+<a data-html="true" data-toggle="tooltip" href="/android" onmouseover="$(this).tooltip('show')" title="&lt;div style='white-space: nowrap;'&gt;ZLibrary app&lt;/div&gt;">
+<img class="colored" height="36" src="/img/icon-android.svg" width="36"/>
+<img class="gray" height="36" src="/img/icon-android-gray.svg" width="36"/>
+</a>
+</li>
+<li class="icon-link">
+<button data-html="true" data-placement="top" data-toggle="tooltip" onclick="window.location.replace('http://loginzlib2vrak5zzpcocc3ouizykn6k5qecgj2tzlnab5wcbqhembyd.onion')" onmouseover="$(this).tooltip('show')" title="&lt;div style='white-space: nowrap;'&gt;TOR version&lt;/div&gt;">
+<img class="colored" height="36" src="/img/icon-tor.svg" width="36"/>
+<img class="gray" height="36" src="/img/icon-tor-gray.svg" width="36"/>
+</button>
+</li>
+</ul>
+</div>
+</div>
+<div class="footer-copyright w-3-2-show">
+<span class="w-5-show w-3-hide p-left-0">Free ebooks since 2009.</span>
+<span class="w-3-p-left-0">
+<a class="footer-mailto" href="mailto: support@bookmail.org">support@bookmail.org</a>
+</span>
+<span class=""> <a href="/faq.php">FAQ</a></span>
+<span class=""> <a href="/blog/">Blog</a></span>
+</div>
+<div class="footer-right w-4-2-left">
+<div class="footer-nav-right" role="navigation">
+<ul class="nav navbar-nav">
+<li class="icon-link">
+<a data-html="true" data-toggle="tooltip" href="/android" onmouseover="$(this).tooltip('show')" title="&lt;div style='white-space: nowrap;'&gt;ZLibrary app&lt;/div&gt;">
+<img class="colored" height="36" src="/img/icon-android.svg" width="36"/>
+<img class="gray" height="36" src="/img/icon-android-gray.svg" width="36"/>
+</a>
+</li>
+<li class="icon-link">
+<button data-html="true" data-placement="top" data-toggle="tooltip" onclick="window.location.replace('http://loginzlib2vrak5zzpcocc3ouizykn6k5qecgj2tzlnab5wcbqhembyd.onion')" onmouseover="$(this).tooltip('show')" title="&lt;div style='white-space: nowrap;'&gt;TOR version&lt;/div&gt;">
+<img class="colored" height="36" src="/img/icon-tor.svg" width="36"/>
+<img class="gray" height="36" src="/img/icon-tor-gray.svg" width="36"/>
+</button>
+</li>
+<li class="w-4-p-left-0"><a href="/privacy.php">Privacy</a></li>
+<li><a href="/dmca.php">DMCA</a></li>
+<li class="dropup p-right-0" style="white-space: nowrap;">
+<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">English <span class="caret"></span></a>
+<ul class="dropdown-menu language-list">
+<li><a href="//br1lib.org/book/634988/95818e/?wrongHash">English</a></li><li><a href="//ru.br1lib.org/book/634988/95818e/?wrongHash">Русский</a></li><li><a href="//es.br1lib.org/book/634988/95818e/?wrongHash">Español</a></li><li><a href="//it.br1lib.org/book/634988/95818e/?wrongHash">Italiano</a></li><li><a href="//el.br1lib.org/book/634988/95818e/?wrongHash">ελληνικά</a></li><li><a href="//ar.br1lib.org/book/634988/95818e/?wrongHash">اللغة العربية</a></li><li><a href="//id.br1lib.org/book/634988/95818e/?wrongHash">Bahasa Indonesia</a></li><li><a href="//my.br1lib.org/book/634988/95818e/?wrongHash">Bahasa Malaysia</a></li><li><a href="//in.br1lib.org/book/634988/95818e/?wrongHash">हिन्दी</a></li><li><a href="//de.br1lib.org/book/634988/95818e/?wrongHash">Deutsch</a></li><li><a href="//fr.br1lib.org/book/634988/95818e/?wrongHash">Français</a></li><li><a href="//pt.br1lib.org/book/634988/95818e/?wrongHash">Português</a></li><li><a href="//ua.br1lib.org/book/634988/95818e/?wrongHash">Українська</a></li><li><a href="//pl.br1lib.org/book/634988/95818e/?wrongHash">Polski</a></li><li><a href="//zh.br1lib.org/book/634988/95818e/?wrongHash">汉语</a></li><li><a href="//jp.br1lib.org/book/634988/95818e/?wrongHash">日本語</a></li><li><a href="//vn.br1lib.org/book/634988/95818e/?wrongHash">Tiếng Việt</a></li><li><a href="//az.br1lib.org/book/634988/95818e/?wrongHash">Azərbaycan Dili</a></li><li><a href="//am.br1lib.org/book/634988/95818e/?wrongHash">Հայոց լեզու</a></li><li><a href="//th.br1lib.org/book/634988/95818e/?wrongHash">ภาษาไทย</a></li><li><a href="//tr.br1lib.org/book/634988/95818e/?wrongHash">Türk Dili</a></li><li><a href="//ge.br1lib.org/book/634988/95818e/?wrongHash">ქართველი</a></li><li><a href="//bd.br1lib.org/book/634988/95818e/?wrongHash">বাংলা</a></li><li><a href="//af.br1lib.org/book/634988/95818e/?wrongHash">پښتو</a></li><li><a href="//te.br1lib.org/book/634988/95818e/?wrongHash">తెలుగు</a></li><li><a href="//ur.br1lib.org/book/634988/95818e/?wrongHash">اردو</a></li><li><a href="//kr.br1lib.org/book/634988/95818e/?wrongHash">한국어</a></li><li><a href="//rs.br1lib.org/book/634988/95818e/?wrongHash">Српски</a></li> </ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="modal fade" id="zlibrary-modal" role="dialog">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header hidden">
+<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+<h4 class="modal-title"></h4>
+</div>
+<div class="modal-body" style="position: relative; min-height: 80px;"></div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="zlibrary-modal-styled" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header hidden">
+<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+<h1 class="modal-title"></h1>
+</div>
+<div class="modal-body"></div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="zlibrary-modal-auth" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-body"></div>
+</div>
+</div>
+</div>
+<!-- ggAdditionalHtml -->
+<!--LiveInternet counter--><script type="text/javascript">
+new Image().src = "//counter.yadro.ru/hit;bookzz?r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random();</script><!--/LiveInternet-->
+<iframe id="uploader" name="uploader" style="border:0px solid #ddd; width:90%; display:none;"></iframe><script></script> <!-- /ggAdditionalHtml -->
+<script>
+            if (typeof pagerOptions !== "undefined" && pagerOptions) {
+                $('div.paginator').paginator(pagerOptions);
+            }
+        </script>
+</body>
+</html>

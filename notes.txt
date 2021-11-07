@@ -1,0 +1,32 @@
+Endpoint do livro:	https://br1lib.org/book/634988/95818e
+Endpoint do botão Download:	https://br1lib.org/dl/634988/3032de
+No botão de download, achei isso:
+
+<a class="btn btn-primary dlButton addDownloadedBook" href="/dl/634988/3032de" target="" data-book_id="634988" data-isbn="0-13-235088-2" rel="nofollow">
+                <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                Download (pdf, 2.93 MB)
+            </a>
+
+################## TEST SAMPLE ########################
+
+const CurrentBook = new Book({"id":"634988","title":"Clean Code - A Handbook of Agile Software Craftsmanship","termsHash":"67e17a9cae6312ea79f65051638eb2f6"})
+            
+
+########################################################
+Resposta está em download_res.html
+
+Lugar de onde realmente vem o pdf: https://bunker2.zlibcdn.com/dtoken/3c8d5b0265df252bb5f66bbaa149ecb4
+
+d token do clean code: 3c8d5b0265df252bb5f66bbaa149ecb4
+
+request.open(
+            "GET",
+            "/papi/user/logJsError/?file=" +
+              encodeURIComponent(url) +
+              "&message=" +
+              encodeURIComponent(errorMsg) +
+              "&line=" +
+              lineNumber +
+              "&client=" +
+              encodeURIComponent(navigator.sayswho)
+          );
