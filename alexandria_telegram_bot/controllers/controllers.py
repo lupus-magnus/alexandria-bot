@@ -1,12 +1,20 @@
 from telegram.update import Update
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import CallbackContext
 import random
-from services.scraper_libgen import search_book
+from services.scraper_libgen import (
+    search_book,
+    get_book,
+    get_book_download_source,
+    search_books,
+)
+import os
+import time
 
 from utils.phrases import citations
 
 # Test function
-def start(update: Update, context):
+def start(update: Update, context: CallbackContext):
     context.bot.send_message(
         chat_id=update.effective_chat.id, text="Qual livro você quer ler hoje?"
     )
@@ -20,7 +28,7 @@ def echo(update: Update, context):
     )
 
 
-def book(update: Update, context) -> None:
+def book(update: Update, context: CallbackContext) -> None:
     """Receives the user search query for a book, and presents him the options"""
 
     book_asked = (" ".join(context.args)) if len(context.args) > 1 else context.args[0]
@@ -29,11 +37,17 @@ def book(update: Update, context) -> None:
         chat_id=update.effective_chat.id,
         text="Opa, anotei aqui. Deixa eu verificar nas minhas prateleiras rapidinho...",
     )
-    book_options = search_book(book_asked)
+
+    book_options = search_books(book_asked)
+
+    # Storing book options in user data.
+    context.user_data["books"] = book_options
+
     for book in book_options:
         index = book_options.index(book)
-        message = f'{index + 1}.\n\n{book["title"]}\n\nAutor(a):\n{book["author"]}'
-        context.bot.send_message(chat_id=update.effective_chat.id, text=message)
+        message = f'{index + 1}) {book["title"]}\n\nAutor(a):\n{book["author"]}\n\nSize:\n{book["size"]}'
+        update.message.reply_photo(book["image"], caption=message)
+        # context.bot.send_message(chat_id=update.effective_chat.id, text=message)
 
     custom_keyboard = [
         [
@@ -53,7 +67,7 @@ def book(update: Update, context) -> None:
     )
 
 
-def choose(update: Update, _) -> None:
+def choose(update: Update, context: CallbackContext) -> None:
     """Receives the option that the user has made for the book and delivers the pdf file."""
 
     query = update.callback_query
@@ -63,4 +77,38 @@ def choose(update: Update, _) -> None:
             text=f"Puxa, parece que você não achou o que estava procurando, né? Pedimos desculpas por isso."
         )
     else:
-        query.edit_message_text(text=f"Selected option: {query.data}")
+        # print("user_data:", context.user_data)
+        query.edit_message_text(text="Um instantinho, vou trazer ele aqui para você.")
+        book_options = context.user_data.get("books", "Not found")
+
+        selected_book = next(
+            selected for selected in book_options if str(selected["id"]) == query.data
+        )
+        details_url = selected_book["details_url"]
+        file_size = int(selected_book["size"].split(" ")[0])
+        if file_size >= 50:
+            context.bot.send_message(
+                chat_id=update.effective_chat.id,
+                text="Hm, por enquanto ainda não consigo te emprestar esse, parece que ele é maior do que 50Mb. Eu vou resolver isso em breve, peço desculpas.",
+            )
+            return
+        print("Now getting the link for the file...")
+        file_link = get_book_download_source(details_url)
+        print(f"Got it! It's {file_link}! Now we download it...")
+        try:
+            path_to_file = get_book(file_link, selected_book["title"])
+            print("Got path to file:", path_to_file)
+
+            context.bot.sendDocument(
+                chat_id=update.effective_chat.id,
+                document=open(path_to_file, "rb"),
+                # allow_sending_without_reply=True,
+            )
+            query.edit_message_text(text="Aqui está. Faça bom proveito!")
+            time.sleep(2)
+            os.remove(path_to_file)
+        except:
+            query.edit_message_text(
+                text="Puxa, perdão... Parece que há algo errado com o arquivo desse livro. :/ \nTente novamente algum comando /book!"
+            )
+        # query.edit_message_text(text=f"Selected option: {query.data}")
