@@ -75,7 +75,10 @@ def search_books(searched_string: str) -> list:
             }
         )
     # Filtering results for only the pdf extension files.
-    results = [result for result in results if result["extension"] == "pdf"]
+    results = [result for result in results if result["extension"] == "pdf"][:3]
+    for index, result in enumerate(results):
+        result["id"] = str(index + 1)
+
     print(results)
     return results
 
