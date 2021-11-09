@@ -8,8 +8,9 @@ from services.scraper_libgen import (
     get_book_download_source,
     search_books,
 )
-import os
-import time
+
+# import os
+# import time
 
 from utils.phrases import citations
 
@@ -97,7 +98,7 @@ def choose(update: Update, context: CallbackContext) -> None:
             return
         print("Now getting the link for the file...")
         file_link = get_book_download_source(details_url)
-        print(f"Got it! It's {file_link} !\nNow we download it...")
+        print(f"Got it! It is: \n\t{file_link}")
         try:
 
             # path_to_file = get_book(file_link, selected_book["title"])
