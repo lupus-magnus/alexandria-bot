@@ -67,8 +67,8 @@ def get_book(download_source: str, book_title: str) -> str:
             output.write(book_pdf_file.read())
         print("Get book function was a success.")
         return path_to_book
-    except:
-        raise Exception
+    except Exception as e:
+        print("Um erro ocorreu:", e)
 
 
 if __name__ == "__main__":
