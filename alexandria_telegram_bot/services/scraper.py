@@ -63,8 +63,9 @@ def get_book(download_source: str, book_title: str) -> str:
     try:
         book_pdf_file = urllib.request.urlopen(download_source)
         path_to_book = f"alexandria_telegram_bot/assets/temp/{book_title.strip()}.pdf"
-        with open(path_to_book, "wb") as output:
-            output.write(book_pdf_file.read())
+        output = open(path_to_book, "wb")
+        output.write(book_pdf_file.read())
+        output.close()
         print("Get book function was a success.")
         return path_to_book
     except Exception as e:
