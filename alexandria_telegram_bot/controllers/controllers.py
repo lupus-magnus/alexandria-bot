@@ -1,29 +1,26 @@
+import os
+import random
 from telegram.update import Update
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CallbackContext
-import random
-from services.scraper_libgen import (
-    search_book,
+from utils.phrases import citations
+from services.scraper import (
     get_book,
     get_book_download_source,
     search_books,
 )
 
-# import os
-# import time
 
-from utils.phrases import citations
-
-# Test function
-def start(update: Update, context: CallbackContext):
+def start(update: Update, context: CallbackContext) -> None:
+    """First function that runs when new people find the bot."""
     context.bot.send_message(
-        chat_id=update.effective_chat.id, text="E aí, qual livro você quer ler hoje?"
+        chat_id=update.effective_chat.id,
+        text="E aí, qual livro você quer ler hoje?",
     )
 
 
-# Function that responds to whatever message that is not a command with a random reading citation.
-def echo(update: Update, context):
-
+def echo(update: Update, context) -> None:
+    """Function that responds to whatever non-command message with a random quote about reading and literature."""
     context.bot.send_message(
         chat_id=update.effective_chat.id, text=random.choice(citations)
     )
@@ -48,7 +45,6 @@ def book(update: Update, context: CallbackContext) -> None:
         index = book_options.index(book)
         message = f'{index + 1}) {book["title"]}\n\nAutor(a):\n{book["author"]}\n\nSize:\n{book["size"]}'
         update.message.reply_photo(book["image"], caption=message)
-        # context.bot.send_message(chat_id=update.effective_chat.id, text=message)
 
     custom_keyboard = [
         [
@@ -90,34 +86,42 @@ def choose(update: Update, context: CallbackContext) -> None:
 
         details_url = selected_book["details_url"]
         file_size = int(selected_book["size"].split(" ")[0])
+        print("Now getting the link for the file...")
+        file_link = get_book_download_source(details_url)
+        print(f"Got it! It is: \n\t{file_link}")
         if file_size >= 50:
             context.bot.send_message(
                 chat_id=update.effective_chat.id,
                 text="Hm, por enquanto ainda não consigo te emprestar esse, parece que ele é maior do que 50Mb. Eu vou resolver isso em breve, peço desculpas.",
             )
             return
-        print("Now getting the link for the file...")
-        file_link = get_book_download_source(details_url)
-        print(f"Got it! It is: \n\t{file_link}")
+        if file_size >= 20:
+            context.bot.send_message(
+                chat_id=update.effective_chat.id,
+                text="Olha, esse é um pouco mais pesado, então pode demorar uns dois ou três minutinhos, ok? É o tempo de esquentar aquele cafézinho bom...",
+            )
+            path_to_book = get_book(file_link, selected_book["title"])
+            context.bot.sendDocument(
+                chat_id=update.effective_chat.id,
+                document=open(path_to_book, "rb"),
+            )
+            os.remove(path_to_book)
+            query.edit_message_text(text="Aqui está. Faça bom proveito!")
+            return
         try:
-
-            # path_to_file = get_book(file_link, selected_book["title"])
-            # print("Got path to file:", path_to_file)
             context.bot.send_message(
                 chat_id=update.effective_chat.id,
                 text="Achei. Vou só conferir aqui e te entrego...",
             )
+            print("filename =", selected_book["title"])
             context.bot.sendDocument(
                 chat_id=update.effective_chat.id,
-                document=file_link  # open(path_to_file, "rb"),
-                # allow_sending_without_reply=True,
+                filename=f'{selected_book["title"]}.pdf',
+                document=file_link,
             )
             query.edit_message_text(text="Aqui está. Faça bom proveito!")
-            # time.sleep(2)
-            # os.remove(path_to_file)
         except Exception as e:
             print("Um erro ocorreu:", str(e))
             query.edit_message_text(
                 text="Puxa, perdão... Parece que há algo errado com o arquivo desse livro. :/ \nTente novamente algum comando /book!"
             )
-        # query.edit_message_text(text=f"Selected option: {query.data}")

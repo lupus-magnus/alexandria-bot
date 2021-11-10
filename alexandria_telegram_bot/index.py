@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv, find_dotenv
+import logging
 from telegram.ext import (
     Updater,
     CommandHandler,
@@ -14,6 +15,10 @@ token = os.getenv("TELEGRAM_API_TOKEN")
 
 updater = Updater(token=token, use_context=True)
 dispatcher = updater.dispatcher
+
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+)
 
 
 def initialize_bot():
